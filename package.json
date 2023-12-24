@@ -12,14 +12,17 @@
     "@heroicons/react": "^2.0.18",
     "@react-three/drei": "^9.91.0",
     "@react-three/fiber": "^8.15.12",
+    "aos": "^2.3.4",
     "framer-motion": "^10.16.16",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^4.12.0",
     "react-simple-typewriter": "^5.0.1",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

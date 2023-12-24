@@ -59,7 +59,7 @@ const NavBar = () => {
               height={32}
               width={35}
               src={"/fb.png"}
-              className=" hover:scale-125 transition-all duration-300 cursor-pointer"
+              className=" hover:scale-125  transition-all duration-300 cursor-pointer"
             />
           </Link>
           <Link href={"shamimgazi."}>

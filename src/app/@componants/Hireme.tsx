@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { slideInFromBottom, slideInFromLeft } from "../utils/Motion";
 const Hireme = () => {
   return (
-    <motion.div className=" fixed left-1 bottom-2 flex items-center justify-center overflow-hidden">
+    <motion.div className=" relative left-1 bottom-2 flex items-center justify-start overflow-hidden mt-[-50px]">
       <motion.div
         initial="hidden"
         animate="visible"
@@ -21,7 +21,7 @@ const Hireme = () => {
         />
         <Link
           href={"mailto:shamim.g47@gmail.com"}
-          className="sm:mt[-1px] sm:h-[70px] sm:w-[70px] bg-white text-black font-[800] text-center sm:rounded-full rounded-full text-[12px] flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:scale-150"
+          className="sm:mt[-1px] sm:h-[70px] sm:w-[70px] sm:opacity-100 opacity-0 bg-white text-black font-[800] text-center sm:rounded-full rounded-full text-[12px] flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
         >
           Hire Me
         </Link>
