@@ -11,6 +11,9 @@ const config: Config = {
       fontFamily: {
         mont: ["var(--font-mont)"],
       },
+      backdropBlur: {
+        xs: "2px",
+      },
       animation: {
         "spin-slow": "spin 1s linear infinite",
         "spin-slower": "spin 8s liner infinite",

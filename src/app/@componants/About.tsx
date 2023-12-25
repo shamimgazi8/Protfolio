@@ -26,7 +26,7 @@ const About = () => {
   return (
     <div className="discription h-[100%] pt-5">
       <div data-aos="zoom-in">
-        <p className=" font-semibold sm:text-[70px] md:text-[70px] text-[40px] text-center text-[#f4fdff]">
+        <p className=" font-semibold sm:text-[70px] md:text-[70px] text-[40px] text-center text-[#f4fdff] shadow-lg shadow-[#2A0E61]/50 backdrop-blur-lg">
           Unveiling the Tapestry of My Journey!
         </p>
       </div>
