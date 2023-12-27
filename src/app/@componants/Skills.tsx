@@ -9,9 +9,12 @@ import { TbBrandNextjs } from "react-icons/tb";
 const Skills = () => {
   return (
     <div className=" h-[100%] relative z-50">
-      <h1 className=" text-[50px] text-white font-bold text-center hover:scale-105   duration-300 cursor-pointer shadow-lg shadow-[#2A0E61]/50">
-        Expertise Showcase
-      </h1>
+      <div className=" w-full flex items-center justify-center">
+        <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
+          <h2 className=" absolute"> Expertise Showcase</h2>
+          <h2>Expertise Showcase</h2>
+        </div>
+      </div>
       <div className="   w-full   " data-aos="zoom-out-down ">
         <div className="sm:w-full w-[100%] mt-10 flex sm:flex-col justify-center  flex-row  gap-8">
           <div className=" flex sm:flex-row flex-col ml-5 sm:mr-0  sm:justify-center justify-start sm:items-center items-start gap-8">
