@@ -13,8 +13,8 @@ const Education = () => {
     <div className=" h-[100%] w-full mt-[100px] relative z-50 ">
       <div className=" w-full flex items-center justify-center">
         <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
-          <h2 className=" absolute"> Academic_Milestones</h2>
-          <h2> Academic_Milestones</h2>
+          <h2 className=" absolute font-mono"> Academic Milestones</h2>
+          <h2 className="font-mono"> Academic Milestones</h2>
         </div>
         {/* <h1 className=" text-[30px] sm:text-[70px] text-white font-bold  shadow-lg shadow-[#2A0E61]/50">
           Academic Milestones

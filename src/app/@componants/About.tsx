@@ -28,11 +28,13 @@ const About = () => {
       <div>
         <div className=" w-full flex items-center justify-center">
           <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
-            <h2 className=" absolute">
+            <h2 className=" absolute font-mono">
               {" "}
               Unveiling the Tapestry of My Journey!
             </h2>
-            <h2>Unveiling the Tapestry of My Journey!</h2>
+            <h2 className=" font-mono">
+              Unveiling the Tapestry of My Journey!
+            </h2>
           </div>
         </div>
       </div>
