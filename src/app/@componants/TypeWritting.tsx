@@ -6,7 +6,7 @@ const TypeWritting = () => {
     delaySpeed: 2000,
   });
   return (
-    <div className="text-[#ec0000] font-[600] sm:text-[20px] ">
+    <div className=" text-cyan-400 font-[600] sm:text-[20px] ">
       <span className="text-[#f4fdff]"> Im a </span>
       {text}
     </div>

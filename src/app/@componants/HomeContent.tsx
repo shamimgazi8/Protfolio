@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { Poppins } from "next/font/google";
+import Image from "next/image";
 
-import TypeWritting from "./TypeWritting";
-import NavBar from "./NavBar";
-import Hireme from "./Hireme";
 import BlackWhole from "./BlackWhole";
+import Hireme from "./Hireme";
+import TypeWritting from "./TypeWritting";
 
 const caveat = Poppins({ subsets: ["latin"], weight: ["600"] });
 const HomeContent = () => {
@@ -30,7 +28,7 @@ const HomeContent = () => {
             <h1
               className={`text-[50px] text-[#f4fdff]  ${caveat.className} text-center`}
             >
-              HI! I AM SHAMIM <span className="text-[#ec1b1b] "> GAZI</span>
+              HI! I AM SHAMIM <span className=" text-cyan-500 "> GAZI</span>
             </h1>
             <TypeWritting />
             <h3 className="sm:text-[45px] text-[30px] m-5 text-gray-300 font-[600]">
