@@ -27,9 +27,8 @@ const About = () => {
     <div className="discription h-[100%] pt-5">
       <div>
         <div className=" w-full flex items-center justify-center">
-          <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
+          <div className="content2 text-[50px] sm:text-[70px] font-bold relative text-center">
             <h2 className=" absolute font-mono">
-              {" "}
               Unveiling the Tapestry of My Journey!
             </h2>
             <h2 className=" font-mono">
@@ -55,11 +54,11 @@ const About = () => {
             data-aos-duration="1000"
             className=" mb-6 font-semibold text-[#f4fdff] pr-8 "
           >
-            Hi, I'm <span className=" font-bold px-2">Shamim Gazi,</span> a web
+            Hi, Im <span className=" font-bold px-2">Shamim Gazi,</span> a web
             developer and Graphics designer with a passion for creating
             beautiful, functional, and user-centered digital experiences. With 2
             years of experience in the field. I am always looking for new and
-            innovative ways to bring my clients' visions to life.
+            innovative ways to bring my clients visions to life.
           </p>
           <p
             data-aos="fade-up"
@@ -68,7 +67,7 @@ const About = () => {
             className=" mb-6 font font-semibold text-[#f4fdff] pr-8"
           >
             I believe that design is about more than just making things look
-            pretty – it's about solving problems and creating intuitive,
+            pretty – it&apos;s about solving problems and creating intuitive,
             enjoyable experiences for users.
           </p>
           <p
@@ -77,7 +76,7 @@ const About = () => {
             data-aos-duration="1400"
             className=" mb-6 font-semibold text-[#f4fdff] pr-8"
           >
-            Whether I'm working on a website, mobile app, or other digital
+            Whether I&apos;m working on a website, mobile app, or other digital
             product, I bring my commitment to design excellence and
             user-centered thinking to every project I work on. I look forward to
             the opportunity to bring my skills and passion to your next project.

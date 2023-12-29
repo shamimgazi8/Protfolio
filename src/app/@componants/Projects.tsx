@@ -18,13 +18,15 @@ const Project = () => {
           className="w-full project p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white m-5 rounded-2xl shadow-gray-600 grid sm:grid-cols-[1fr,2fr]"
         >
           <div className=" flex items-center overflow-hidden rounded-3xl h-[190px] mt-5 sm:mb-0 mb-5">
-            <Image
-              height={100}
-              width={500}
-              alt="cover"
-              src={"/project/map.png"}
-              className=" cursor-pointer hover:scale-105 duration-300 border-3xl"
-            />
+            <div className="h-auto rounded-[20px] overflow-hidden ">
+              <Image
+                height={100}
+                width={500}
+                alt="cover"
+                src={"/project/map.png"}
+                className=" cursor-pointer hover:scale-105 duration-300 border-3xl"
+              />
+            </div>
           </div>
           <div className=" pl-10">
             <h1 className=" sm:text-[50px] text-[30px] text-white font-semibold cursor-pointer ">
@@ -52,16 +54,18 @@ const Project = () => {
         >
           <div className="sm:w-[45%] w-[100%] project p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white m-5 rounded-2xl shadow-gray-600 grid items-center">
             <div className=" flex items-center justify-center rounded-[20px] h-auto sm:mb-0 mb-5">
-              <Image
-                height={100}
-                width={500}
-                alt="cover"
-                src={"/project/cine.png"}
-                className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
-              />
+              <div className="h-auto rounded-[20px] overflow-hidden ">
+                <Image
+                  height={100}
+                  width={500}
+                  alt="cover"
+                  src={"/project/cine.png"}
+                  className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
+                />
+              </div>
             </div>
             <div className=" pl-5">
-              <h1 className=" sm:text-[30px] text-[20px] text-white font-semibold cursor-pointer ">
+              <h1 className=" sm:text-[30px] text-[20px] text-white font-semibold cursor-pointer mt-3">
                 CinemaBar
               </h1>
               <p className=" sm:text-[15px] text-[10px] text-white font-semibold ">
@@ -80,13 +84,15 @@ const Project = () => {
           </div>
           <div className="sm:w-[45%] w-[100%] project p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white m-5 rounded-2xl shadow-gray-600 grid">
             <div className=" flex items-center justify-center  rounded-[20px] h-auto sm:mb-0 mb-5">
-              <Image
-                height={100}
-                width={500}
-                alt="cover"
-                src={"/project/map.png"}
-                className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
-              />
+              <div className="h-auto rounded-[20px] overflow-hidden ">
+                <Image
+                  height={100}
+                  width={500}
+                  alt="cover"
+                  src={"/project/map.png"}
+                  className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
+                />
+              </div>
             </div>
             <div className=" pl-5">
               <h1 className=" sm:text-[30px] text-[20px] text-white font-semibold cursor-pointer ">
@@ -115,13 +121,15 @@ const Project = () => {
           className="w-full project p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white m-5 rounded-2xl shadow-gray-600 grid sm:grid-cols-[1fr,2fr]"
         >
           <div className=" flex items-center overflow-hidden rounded-3xl h-[190px] mt-5 sm:mb-0 mb-5">
-            <Image
-              height={100}
-              width={500}
-              alt="cover"
-              src={"/project/rec.png"}
-              className=" cursor-pointer hover:scale-105 duration-300 border-3xl"
-            />
+            <div className="h-auto rounded-[20px] overflow-hidden ">
+              <Image
+                height={100}
+                width={500}
+                alt="cover"
+                src={"/project/rec.png"}
+                className=" cursor-pointer hover:scale-105 duration-300 border-3xl"
+              />
+            </div>
           </div>
           <div className=" pl-5">
             <h1 className=" sm:text-[50px] text-[30px] text-white font-semibold cursor-pointer ">
@@ -151,13 +159,15 @@ const Project = () => {
             className="sm:w-[45%] w-[100%] project p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white m-5 rounded-2xl shadow-gray-600 grid "
           >
             <div className=" flex items-center justify-center rounded-[20px] h-auto sm:mb-0 mb-5">
-              <Image
-                height={100}
-                width={500}
-                alt="cover"
-                src={"/project/shr.png"}
-                className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
-              />
+              <div className="h-auto rounded-[20px] overflow-hidden ">
+                <Image
+                  height={100}
+                  width={500}
+                  alt="cover"
+                  src={"/project/shr.png"}
+                  className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
+                />
+              </div>
             </div>
             <div className=" pl-5">
               <h1 className=" sm:text-[30px] text-[20px] text-white font-semibold cursor-pointer ">
@@ -184,13 +194,15 @@ const Project = () => {
             className="sm:w-[45%] w-[100%] project p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white m-5 rounded-2xl shadow-gray-600 grid "
           >
             <div className=" flex items-center justify-center  rounded-[20px] h-auto sm:mb-0 mb-5">
-              <Image
-                height={100}
-                width={500}
-                alt="cover"
-                src={"/project/cou.png"}
-                className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
-              />
+              <div className="h-auto rounded-[20px] overflow-hidden ">
+                <Image
+                  height={100}
+                  width={500}
+                  alt="cover"
+                  src={"/project/cou.png"}
+                  className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
+                />
+              </div>
             </div>
             <div className=" pl-5">
               <h1 className=" sm:text-[30px] text-[20px] text-white font-semibold cursor-pointer ">

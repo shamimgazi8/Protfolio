@@ -10,7 +10,7 @@ const Skills = () => {
   return (
     <div className=" h-[100%] relative z-50">
       <div className=" w-full flex items-center justify-center">
-        <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
+        <div className="content2 text-[50px] sm:text-[70px] font-bold relative text-center">
           <h2 className=" absolute font-mono"> Expertise Showcase</h2>
           <h2 className=" font-mono">Expertise Showcase</h2>
         </div>

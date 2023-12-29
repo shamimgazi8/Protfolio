@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { slideInFromBottom, slideInFromLeft } from "../utils/Motion";
 const Hireme = () => {
   return (
-    <motion.div className=" relative left-1 bottom-2 flex items-center justify-start overflow-hidden mt-[-50px]">
+    <motion.div className=" relative left-0 bottom-0 flex items-center justify-start overflow-hidden mt-[-50px]">
       <motion.div
         initial="hidden"
         animate="visible"

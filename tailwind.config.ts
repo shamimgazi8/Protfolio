@@ -7,6 +7,11 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    // screens: {
+    //   xsm: "490px",
+    //   smd: "620px",
+    // },
+
     extend: {
       fontFamily: {
         mont: ["var(--font-mont)"],

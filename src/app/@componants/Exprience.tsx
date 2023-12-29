@@ -14,7 +14,7 @@ const Exprience = () => {
   return (
     <div className=" h-[100%] w-full mt-[100px] relative z-50  ">
       <div className=" w-full flex items-center justify-center">
-        <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
+        <div className="content2 text-[40px] sm:text-[70px] font-bold relative text-center">
           <h2 className=" absolute font-mono"> Journey in Expertise</h2>
           <h2 className=" font-mono">Journey in Expertise</h2>
         </div>
@@ -22,12 +22,12 @@ const Exprience = () => {
 
       <div
         ref={ref}
-        className=" grid grid-cols-[150px,1fr] sm:grid-cols-[1fr,3fr] items-center"
+        className=" grid grid-cols-[100px,1fr] sm:grid-cols-[1fr,3fr] items-center"
       >
         <div>
           <motion.div
             style={{ scaleY: scrollYProgress }}
-            className=" absolute left-[300px] top-[200px] w-[4px] h-[80%] bg-cyan-400 origin-top"
+            className=" absolute sm:left-[300px] sm:top-[200px] left-[50px] top-[260px] w-[4px] h-[80%] bg-cyan-400 origin-top"
           />
         </div>
         <div className=" mt-10 w-full">
@@ -140,10 +140,10 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  Worked on a team responsible for developing Amazon's mobile
-                  app, including implementing new features such as product
-                  recommendations and user reviews, and optimizing the app's
-                  performance and reliability.
+                  Worked on a team responsible for developing Amazon&apos;s
+                  mobile app, including implementing new features such as
+                  product recommendations and user reviews, and optimizing the
+                  app&apos;s performance and reliability.
                 </h2>
               </div>
             </div>

@@ -12,7 +12,7 @@ const Education = () => {
   return (
     <div className=" h-[100%] w-full mt-[100px] relative z-50 ">
       <div className=" w-full flex items-center justify-center">
-        <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
+        <div className="content2 text-[50px] sm:text-[70px] font-bold relative text-center">
           <h2 className=" absolute font-mono"> Academic Milestones</h2>
           <h2 className="font-mono"> Academic Milestones</h2>
         </div>
@@ -28,7 +28,7 @@ const Education = () => {
         <div>
           <motion.div
             style={{ scaleY: scrollYProgress }}
-            className=" absolute left-[300px] top-[200px] w-[4px] h-[80%] bg-cyan-400 rounded-3xl origin-top"
+            className=" absolute sm:left-[300px] sm:top-[200px] left-[50px] top-[260px] w-[4px] h-[80%] bg-cyan-400 origin-top"
           />
         </div>
         <div className=" mt-10 w-full">
@@ -94,8 +94,8 @@ const Education = () => {
                   data-aos-duration="1600"
                   className=" text-[15px] text-white font-semibold"
                 >
-                  Completed a master's project on deep learning, developing a
-                  new neural network architecture for natural language
+                  Completed a master&apos;s project on deep learning, developing
+                  a new neural network architecture for natural language
                   understanding.
                 </h2>
               </div>
