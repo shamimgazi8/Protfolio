@@ -16,9 +16,6 @@ const Education = () => {
           <h2 className=" absolute font-mono"> Academic Milestones</h2>
           <h2 className="font-mono"> Academic Milestones</h2>
         </div>
-        {/* <h1 className=" text-[30px] sm:text-[70px] text-white font-bold  shadow-lg shadow-[#2A0E61]/50">
-          Academic Milestones
-        </h1> */}
       </div>
 
       <div
@@ -52,7 +49,6 @@ const Education = () => {
                   data-aos-duration="1100"
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
-                  {" "}
                   2018-2022 | Daffodil Institute of IT (DIIT)
                 </p>
                 <h2

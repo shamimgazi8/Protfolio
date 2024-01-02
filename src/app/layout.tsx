@@ -1,5 +1,5 @@
 "use client";
-import type { Metadata } from "next";
+
 import { Caveat, Inter, Montserrat } from "next/font/google";
 
 import AOS from "aos";
@@ -9,16 +9,15 @@ import "./globals.css";
 import StarsCanvas from "./@componants/StarBackGround";
 import NavBar from "./@componants/NavBar";
 import { useEffect } from "react";
+import { LayoutProps } from "../../.next/types/app/layout";
 
 const inter = Inter({ subsets: ["latin"] });
 const caveat = Caveat({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+  children
+}:LayoutProps) {
   useEffect(() => {
     AOS.init({
       duration: 1000,
