@@ -17,7 +17,8 @@ const About = () => {
     useEffect(() => {
       springValue.on("change", (latest) => {
         if (ref.current && latest.toFixed(0) <= value) {
-          // ref.current.textContent = latest.toFixed(0);
+          // @ts-ignore
+          ref.current.textContent = latest.toFixed(0); 
         }
       });
     }, [springValue, value]);
