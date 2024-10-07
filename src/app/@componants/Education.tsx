@@ -107,7 +107,7 @@ const Education = () => {
                   data-aos-duration="800"
                   className=" text-[30px] font-bold text-white mb-2"
                 >
-                  Online Coursework
+                  Udemy
                 </h1>
                 <p
                   data-aos="fade-up"
@@ -116,7 +116,7 @@ const Education = () => {
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}
-                  2016-2020 | Coursera And EdX
+                  2018-2020 | Frontend Development
                 </p>
                 <h2
                   data-aos="fade-up"
@@ -124,8 +124,8 @@ const Education = () => {
                   data-aos-duration="1600"
                   className=" text-[15px] text-white font-semibold"
                 >
-                  Completed coursework in advanced topics such as Reinforcement
-                  Learning, Computer Vision, and Machine Learning Engineering.
+                  Completed coursework in advanced topics such as JavaScript
+                  React, Computer Vision, Softaware Engineering.
                 </h2>
               </div>
             </div>

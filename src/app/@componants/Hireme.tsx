@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { slideInFromBottom, slideInFromLeft } from "../utils/Motion";
+import { slideInFromBottom } from "../utils/Motion";
 const Hireme = () => {
   return (
     <motion.div className=" relative left-0 bottom-0 flex items-center justify-start overflow-hidden mt-[-50px]">

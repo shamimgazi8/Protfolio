@@ -12,8 +12,8 @@ const HomeContent = () => {
   return (
     <>
       <BlackWhole />
-      <div className=" relative flex flex-col  w-full z-50  h-auto">
-        <div className=" profile mt-10 sm:flex sm:justify-around sm:m-[15px] sm:items-center  ">
+      <div className=" relative z-50 h-[100vh] flex flex-col justify-center items-start ">
+        <div className=" profile mt-10 flex justify-around w-full ">
           <div
             data-aos="fade-right"
             className="flex flex-col justify-center items-center "
@@ -52,6 +52,7 @@ const HomeContent = () => {
           </p> */}
           </div>
         </div>
+
         <Hireme />
       </div>
     </>

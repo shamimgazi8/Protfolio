@@ -43,9 +43,9 @@ const Exprience = () => {
                   data-aos-duration="800"
                   className=" text-[40px] font-bold text-white mb-2"
                 >
-                  Software Engineer{" "}
+                  Frontend Developer{" "}
                   <Link href={"https://www.google.com/"}>
-                    <span className=" text-cyan-400"> @Google </span>
+                    <span className=" text-cyan-400"> @M4yours IT </span>
                   </Link>
                 </h1>
                 <p
@@ -55,7 +55,7 @@ const Exprience = () => {
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}
-                  2022-Present | Mountain View, CA
+                  2023-2024 (April) | Elephant Road, Dhaka, BD
                 </p>
                 <h2
                   data-aos="fade-up"
@@ -63,10 +63,18 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  Worked on a team responsible for developing new features for
-                  Google search engine, including improving the accuracy and
-                  relevance of search results and developing new tools for data
-                  analysis and visualization.
+                  Worked as part of a team responsible for developing and
+                  enhancing web applications, focusing on improving user
+                  experience and interface performance. Key contributions
+                  include implementing responsive UI components, optimizing the
+                  speed and accessibility of web pages, and integrating new
+                  features using modern frontend technologies such as React.js
+                  and TypeScript. Additionally, collaborated with backend
+                  developers and designers to ensure seamless API integrations
+                  and developed reusable code components to streamline future
+                  development efforts. Played a pivotal role in enhancing
+                  cross-browser compatibility and ensuring mobile responsiveness
+                  for diverse user devices.
                 </h2>
               </div>
             </div>
@@ -81,9 +89,9 @@ const Exprience = () => {
                   data-aos-duration="800"
                   className=" text-[40px] font-bold text-white mb-2"
                 >
-                  Intern
+                  MERN Stack
                   <Link href={"https://www.google.com/"}>
-                    <span className=" text-cyan-400"> @Facebook </span>
+                    <span className=" text-cyan-400"> @Sharmin Furniture </span>
                   </Link>
                 </h1>
                 <p
@@ -93,7 +101,7 @@ const Exprience = () => {
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}
-                  Summer 2021 | Menlo Park, CA.
+                  2024 to Present | Banasree, BD.
                 </p>
                 <h2
                   data-aos="fade-up"
@@ -101,11 +109,19 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  Worked on a team responsible for developing a new mobile app
-                  feature that allowed users to create and share short-form
-                  video content, including designing and implementing a new user
-                  interface and developing the backend infrastructure to support
-                  the feature.
+                  Worked as part of a team to develop full-stack web
+                  applications using the MERN stack (MongoDB, Express.js,
+                  React.js, Node.js). Focused on building scalable and efficient
+                  RESTful APIs, designing responsive and dynamic user
+                  interfaces, and managing backend databases. Key contributions
+                  included implementing user authentication, optimizing database
+                  queries for better performance, and integrating third-party
+                  services. Also worked on deploying applications on cloud
+                  platforms and ensuring smooth interaction between the frontend
+                  and backend, leveraging technologies like Redux for state
+                  management and MongoDB for handling large data sets. Played a
+                  key role in ensuring the overall responsiveness, security, and
+                  maintainability of the applications.
                 </h2>
               </div>
             </div>
@@ -120,9 +136,9 @@ const Exprience = () => {
                   data-aos-duration="800"
                   className=" text-[40px] font-bold text-white mb-2"
                 >
-                  Software Developer
+                  Bootcamp
                   <Link href={"https://www.google.com/"}>
-                    <span className=" text-cyan-400"> @Amazon</span>
+                    <span className=" text-cyan-400"> @Project Code</span>
                   </Link>
                 </h1>
                 <p
@@ -132,7 +148,7 @@ const Exprience = () => {
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}
-                  2020-2021 | Seattle, WA.
+                  2020-2021 | Gulshan, Dhaka, BD.
                 </p>
                 <h2
                   data-aos="fade-up"
@@ -140,10 +156,24 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  Worked on a team responsible for developing Amazon&apos;s
-                  mobile app, including implementing new features such as
-                  product recommendations and user reviews, and optimizing the
-                  app&apos;s performance and reliability.
+                  A software engineering bootcamp is an intensive, fast-paced
+                  program designed to equip students with the practical skills
+                  and knowledge needed to pursue a career in software
+                  development. Typically spanning several weeks to a few months,
+                  these bootcamps focus on teaching core programming languages,
+                  frameworks, and best practices in software engineering.
+                  Participants learn full-stack development, covering both
+                  frontend (HTML, CSS, JavaScript, React) and backend (Node.js,
+                  Express, databases) technologies, along with version control
+                  (Git/GitHub), testing, and deployment techniques. The
+                  curriculum often includes hands-on projects, coding
+                  challenges, and real-world scenarios to help students build a
+                  portfolio. In addition to coding skills, bootcamps teach
+                  software engineering principles such as Agile methodologies,
+                  problem-solving, and debugging. Graduates of software
+                  engineering bootcamps emerge with practical experience, ready
+                  to take on junior developer roles, and often have support with
+                  job placements, networking, and career guidance.
                 </h2>
               </div>
             </div>
