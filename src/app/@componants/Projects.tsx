@@ -1,6 +1,13 @@
 import Image from "next/image";
 import projects from "./../../../data/projects";
 import { FaGithub } from "react-icons/fa";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import Link from "next/link";
+import { Fragment } from "react";
 const Project = () => {
   return (
     <div className=" h-[100%] w-[80%] mt-[100px] mx-auto relative z-50 ">
@@ -13,7 +20,7 @@ const Project = () => {
       <div className="grid grid-cols-2 gap-5">
         {projects?.map((item: any, i: any) => {
           function checkSize(count: any) {
-            const pattern = count % 3; // Use modulo 5 to create the repeating pattern
+            const pattern = count % 3;
 
             if (pattern === 0 || pattern === 3) {
               return "large";
@@ -22,10 +29,9 @@ const Project = () => {
             }
           }
           return (
-            <>
+            <Fragment key={i}>
               {checkSize(i) === "large" ? (
                 <div
-                  key={i}
                   data-aos="fade-up"
                   data-aos-easing="linear"
                   data-aos-duration="800"
@@ -51,15 +57,43 @@ const Project = () => {
                     </p>
                     <div className=" flex gap-8 mt-5">
                       <FaGithub className=" text-white text-[40px] cursor-pointer" />
-                      <button className="bg-white text-black font-bold p-2 rounded hover:text-white hover:bg-[#3B3C36] duration-300">
-                        {" "}
-                        Visit Project
-                      </button>
+
+                      <Popover>
+                        <PopoverTrigger>
+                          <div>
+                            <button className="bg-white text-black font-bold p-2 rounded hover:text-white hover:bg-[#3B3C36] duration-300">
+                              Visit Project
+                            </button>
+                          </div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className=" flex gap-5 ">
+                            <Link href={item?.github} target="blank">
+                              <button className="bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                                Code
+                              </button>
+                            </Link>
+                            <Link href={`/preview/${item?.slug}`}>
+                              <button className=" bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                                Preview
+                              </button>
+                            </Link>
+                            <Link href={item?.live} target="blank">
+                              <button className=" bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                                Live
+                              </button>
+                            </Link>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
                     </div>
                   </div>
                 </div>
               ) : (
                 <div
+                  data-aos="fade-up"
+                  data-aos-easing="linear"
+                  data-aos-duration="800"
                   key={i}
                   className=" borderCurved  p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white  rounded-2xl shadow-gray-600 grid items-center"
                 >
@@ -83,15 +117,39 @@ const Project = () => {
                     </p>
                     <div className=" flex gap-8 mt-5 justify-between items-center">
                       <FaGithub className=" text-white text-[30px] cursor-pointer" />
-                      <button className="bg-white text-black text-[10px] font-bold p-2 rounded hover:text-white hover:bg-[#3B3C36] duration-300">
-                        {" "}
-                        Visit Project
-                      </button>
+                      <Popover>
+                        <PopoverTrigger>
+                          <div>
+                            <button className="bg-white text-black font-bold p-2 rounded hover:text-white hover:bg-[#3B3C36] duration-300">
+                              Visit Project
+                            </button>
+                          </div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className=" flex gap-5 ">
+                            <Link href={item?.github} target="blank">
+                              <button className="bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                                Code
+                              </button>
+                            </Link>
+                            <Link href={`/preview/${item?.slug}`}>
+                              <button className=" bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                                Preview
+                              </button>
+                            </Link>
+                            <Link href={item?.live} target="blank">
+                              <button className=" bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                                Live
+                              </button>
+                            </Link>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
                     </div>
                   </div>
                 </div>
               )}
-            </>
+            </Fragment>
           );
         })}
       </div>

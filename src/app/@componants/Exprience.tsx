@@ -3,8 +3,54 @@ import Link from "next/link";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 
 import { useScroll, motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
+import ReadMore from "./Readmore";
+
+const text1 = `       Worked as part of a team responsible for developing and
+                  enhancing web applications, focusing on improving user
+                  experience and interface performance. Key contributions
+                  include implementing responsive UI components, optimizing the
+                  speed and accessibility of web pages, and integrating new
+                  features using modern frontend technologies such as React.js
+                  and TypeScript. Additionally, collaborated with backend
+                  developers and designers to ensure seamless API integrations
+                  and developed reusable code components to streamline future
+                  development efforts. Played a pivotal role in enhancing
+                  cross-browser compatibility and ensuring mobile responsiveness
+                  for diverse user devices.`;
+const text2 = ` Worked as part of a team to develop full-stack web
+                  applications using the MERN stack (MongoDB, Express.js,
+                  React.js, Node.js). Focused on building scalable and efficient
+                  RESTful APIs, designing responsive and dynamic user
+                  interfaces, and managing backend databases. Key contributions
+                  included implementing user authentication, optimizing database
+                  queries for better performance, and integrating third-party
+                  services. Also worked on deploying applications on cloud
+                  platforms and ensuring smooth interaction between the frontend
+                  and backend, leveraging technologies like Redux for state
+                  management and MongoDB for handling large data sets. Played a
+                  key role in ensuring the overall responsiveness, security, and
+                  maintainability of the applications.`;
+const text3 = `   A software engineering bootcamp is an intensive, fast-paced
+                  program designed to equip students with the practical skills
+                  and knowledge needed to pursue a career in software
+                  development. Typically spanning several weeks to a few months,
+                  these bootcamps focus on teaching core programming languages,
+                  frameworks, and best practices in software engineering.
+                  Participants learn full-stack development, covering both
+                  frontend (HTML, CSS, JavaScript, React) and backend (Node.js,
+                  Express, databases) technologies, along with version control
+                  (Git/GitHub), testing, and deployment techniques. The
+                  curriculum often includes hands-on projects, coding
+                  challenges, and real-world scenarios to help students build a
+                  portfolio. In addition to coding skills, bootcamps teach
+                  software engineering principles such as Agile methodologies,
+                  problem-solving, and debugging. Graduates of software
+                  engineering bootcamps emerge with practical experience, ready
+                  to take on junior developer roles, and often have support with
+                  job placements, networking, and career guidance.`;
+
 const Exprience = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -63,18 +109,7 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  Worked as part of a team responsible for developing and
-                  enhancing web applications, focusing on improving user
-                  experience and interface performance. Key contributions
-                  include implementing responsive UI components, optimizing the
-                  speed and accessibility of web pages, and integrating new
-                  features using modern frontend technologies such as React.js
-                  and TypeScript. Additionally, collaborated with backend
-                  developers and designers to ensure seamless API integrations
-                  and developed reusable code components to streamline future
-                  development efforts. Played a pivotal role in enhancing
-                  cross-browser compatibility and ensuring mobile responsiveness
-                  for diverse user devices.
+                  <ReadMore text={text1} />
                 </h2>
               </div>
             </div>
@@ -109,19 +144,8 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  Worked as part of a team to develop full-stack web
-                  applications using the MERN stack (MongoDB, Express.js,
-                  React.js, Node.js). Focused on building scalable and efficient
-                  RESTful APIs, designing responsive and dynamic user
-                  interfaces, and managing backend databases. Key contributions
-                  included implementing user authentication, optimizing database
-                  queries for better performance, and integrating third-party
-                  services. Also worked on deploying applications on cloud
-                  platforms and ensuring smooth interaction between the frontend
-                  and backend, leveraging technologies like Redux for state
-                  management and MongoDB for handling large data sets. Played a
-                  key role in ensuring the overall responsiveness, security, and
-                  maintainability of the applications.
+                  {" "}
+                  <ReadMore text={text2} />
                 </h2>
               </div>
             </div>
@@ -156,24 +180,7 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  A software engineering bootcamp is an intensive, fast-paced
-                  program designed to equip students with the practical skills
-                  and knowledge needed to pursue a career in software
-                  development. Typically spanning several weeks to a few months,
-                  these bootcamps focus on teaching core programming languages,
-                  frameworks, and best practices in software engineering.
-                  Participants learn full-stack development, covering both
-                  frontend (HTML, CSS, JavaScript, React) and backend (Node.js,
-                  Express, databases) technologies, along with version control
-                  (Git/GitHub), testing, and deployment techniques. The
-                  curriculum often includes hands-on projects, coding
-                  challenges, and real-world scenarios to help students build a
-                  portfolio. In addition to coding skills, bootcamps teach
-                  software engineering principles such as Agile methodologies,
-                  problem-solving, and debugging. Graduates of software
-                  engineering bootcamps emerge with practical experience, ready
-                  to take on junior developer roles, and often have support with
-                  job placements, networking, and career guidance.
+                  <ReadMore text={text3} />
                 </h2>
               </div>
             </div>

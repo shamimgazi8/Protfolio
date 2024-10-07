@@ -35,7 +35,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className=" w-full h-[100%] grid md:grid-cols-3 sm:grid-cols-3 m-10 ">
+      <div className=" w-full h-[100%] grid md:grid-cols-[2fr_1fr_1fr] sm:grid-cols-3 m-10 items-center ">
         <div className=" h-full p-8 ">
           <h1
             data-aos="fade-up"
@@ -51,11 +51,14 @@ const About = () => {
             data-aos-duration="1000"
             className=" mb-6 font-semibold text-[#f4fdff] pr-8 "
           >
-            Hi, Im <span className=" font-bold px-2">Shamim Gazi,</span> a web
-            developer and Graphics designer with a passion for creating
-            beautiful, functional, and user-centered digital experiences. With 2
-            years of experience in the field. I am always looking for new and
-            innovative ways to bring my clients visions to life.
+            As a seasoned front-end web developer with a passion for
+            user-centric design, I specialize in leveraging modern technologies
+            to create seamless web experiences and creating dynamic and
+            intuitive web applications that prioritize both functionality and
+            user experience. With a strong foundation in HTML, CSS, and
+            JavaScript, I excel in leveraging advanced technologies and
+            frameworks such as React, Next.js, and TypeScript to build scalable
+            and responsive interfaces.
           </p>
           <p
             data-aos="fade-up"
@@ -63,20 +66,24 @@ const About = () => {
             data-aos-duration="1200"
             className=" mb-6 font font-semibold text-[#f4fdff] pr-8"
           >
-            I believe that design is about more than just making things look
-            pretty – it&apos;s about solving problems and creating intuitive,
-            enjoyable experiences for users.
+            I integrate Redux Toolkit for efficient state management, ensuring
+            seamless data flow and application stability. My proficiency extends
+            to server-side development using Express.js and Node.js, enabling me
+            to build robust APIs and backend systems that complement front-end
+            functionalities.
           </p>
+
           <p
             data-aos="fade-up"
             data-aos-easing="linear"
             data-aos-duration="1400"
             className=" mb-6 font-semibold text-[#f4fdff] pr-8"
           >
-            Whether I&apos;m working on a website, mobile app, or other digital
-            product, I bring my commitment to design excellence and
-            user-centered thinking to every project I work on. I look forward to
-            the opportunity to bring my skills and passion to your next project.
+            I am dedicated to staying ahead in the field, continually exploring
+            new tools and methodologies to enhance performance and optimize user
+            interactions. My goal is to deliver high-quality, accessible web
+            solutions that meet both user needs and business objectives, while
+            adhering to best practices in web development.{" "}
           </p>
         </div>
         <div

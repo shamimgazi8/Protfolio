@@ -1,7 +1,13 @@
 import { useTypewriter } from "react-simple-typewriter";
 const TypeWritting = () => {
   const [text, count] = useTypewriter({
-    words: ["Front-End-Developer", "Programmer", "Graphic Designer", "Creator"],
+    words: [
+      "Front end Developer",
+      "Programmer",
+      "Web Developer ",
+      "JavaScript Developer",
+      "React Developer",
+    ],
     loop: true,
     delaySpeed: 2000,
   });
