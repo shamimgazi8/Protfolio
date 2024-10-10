@@ -1,12 +1,7 @@
-"use client";
-import { useParams } from "next/navigation";
-const PreviewSlug = () => {
-  const params = useParams();
+import PreviewSlugPage from "@/app/@componants/Preview";
 
-  return (
-    <div className=" text-4xl text-white">
-      <h1>{`Gallery of ${params?.slug}`}</h1>
-    </div>
-  );
+const PreviewSlug = () => {
+  return <PreviewSlugPage />;
 };
+
 export default PreviewSlug;
