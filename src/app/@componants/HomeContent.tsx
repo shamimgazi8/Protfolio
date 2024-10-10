@@ -12,8 +12,8 @@ const HomeContent = () => {
   return (
     <>
       <BlackWhole />
-      <div className=" relative z-50 h-[100vh] flex flex-col justify-center items-start ">
-        <div className=" profile mt-10 flex justify-around w-full ">
+      <div className="w-[90%] mx-auto relative z-50 lg:h-[100vh] flex flex-col justify-center items-start ">
+        <div className=" profile mt-10 flex lg:flex-row flex-col justify-around w-full lg:p-0 ">
           <div
             data-aos="fade-right"
             className="flex flex-col justify-center items-center "
@@ -31,7 +31,7 @@ const HomeContent = () => {
               HI! I AM SHAMIM <span className=" text-cyan-500 "> GAZI</span>
             </h1>
             <TypeWritting />
-            <h3 className="sm:text-[45px] text-[30px] m-5 text-gray-300 font-[600]">
+            <h3 className="sm:text-[45px] text-[30px] m-5 text-gray-300 font-[600] text-center">
               I build things for the web
               <span className="text-[#f4fdff]">.</span>
             </h3>
@@ -45,7 +45,7 @@ const HomeContent = () => {
               width={500}
               alt="skills"
               src={"/mainIconsdark.svg"}
-              className=" pr-[-10px] sm:pr-[0px]"
+              className="lg:ml-0 ml-[100px]"
             />
             {/* <p className="text-white m-2">
             I design and code beautifully simple things, and I love what I do

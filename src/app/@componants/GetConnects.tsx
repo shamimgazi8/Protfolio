@@ -14,13 +14,13 @@ const GetConnects: React.FC<GetConnectedProps> = ({
   const mailtoLink = `mailto:${email}`;
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 p-6 rounded-lg shadow-lg mt-10 z-50">
+    <div className="flex flex-col items-center justify-center space-y-4 p-6 rounded-lg shadow-lg mt-10 z-[100] mb-[50px] text-center gap-2">
       <h2 className="text-2xl font-bold text-white">Get Connected</h2>
       <p className="text-white">
         Reach me on Upwork, Fiverr, or send an email!
       </p>
 
-      <div className="flex space-x-4 z-50 ">
+      <div className="flex  lg:flex-row flex-col gap-5 items-center justify-center z-50">
         {/* Upwork Button */}
         <a
           href={upworkUrl}

@@ -15,9 +15,7 @@ const inter = Inter({ subsets: ["latin"] });
 const caveat = Caveat({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-export default function RootLayout({
-  children
-}:LayoutProps) {
+export default function RootLayout({ children }: LayoutProps) {
   useEffect(() => {
     AOS.init({
       duration: 1000,

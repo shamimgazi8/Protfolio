@@ -37,7 +37,7 @@ const Project = () => {
                   data-aos-duration="800"
                   className="w-full borderCurved p-8 col-span-2  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white mt-5 rounded-2xl shadow-gray-600 grid sm:grid-cols-[1fr,2fr]"
                 >
-                  <div className=" flex items-center overflow-hidden rounded-3xl h-[300px]  sm:mb-0 mb-5">
+                  <div className=" flex items-center overflow-hidden rounded-3xl lg:h-[300px]  sm:mb-0 mb-5">
                     <div className=" rounded-[20px] overflow-hidden ">
                       <Image
                         height={100}
@@ -48,7 +48,7 @@ const Project = () => {
                       />
                     </div>
                   </div>
-                  <div className=" pl-10">
+                  <div className=" lg:pl-10 pl-5">
                     <h1 className=" sm:text-[50px] text-[30px] text-white font-semibold cursor-pointer ">
                       {item?.title}
                     </h1>
@@ -95,10 +95,10 @@ const Project = () => {
                   data-aos-easing="linear"
                   data-aos-duration="800"
                   key={i}
-                  className=" borderCurved  p-8  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white  rounded-2xl shadow-gray-600 grid items-center"
+                  className=" borderCurved  p-8 lg:col-span-1 col-span-2  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white  rounded-2xl shadow-gray-600 grid items-center"
                 >
                   <div className=" flex items-center justify-center rounded-[20px] h-auto sm:mb-0 mb-5">
-                    <div className="h-[250px] rounded-[20px] overflow-hidden ">
+                    <div className="lg:h-[250px] rounded-[20px] overflow-hidden ">
                       <Image
                         height={100}
                         width={500}

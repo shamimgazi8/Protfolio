@@ -25,7 +25,7 @@ const About = () => {
     return <span ref={ref}> </span>;
   };
   return (
-    <div className="discription h-[100%] pt-5">
+    <div className="discription h-[100%] lg:pt-5 pt-[100px] z-50">
       <div>
         <div className=" w-full flex items-center justify-center">
           <div className="content2 text-[50px] sm:text-[70px] font-bold relative text-center">
@@ -35,7 +35,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className=" w-full h-[100%] grid md:grid-cols-[2fr_1fr_1fr] sm:grid-cols-3 m-10 items-center ">
+      <div className=" w-full h-[100%] grid grid-cols-1  lg:grid-cols-3  m-10 items-center justify-center ">
         <div className=" h-full p-8 ">
           <h1
             data-aos="fade-up"
