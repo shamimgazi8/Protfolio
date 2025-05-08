@@ -31,7 +31,7 @@ const About = () => {
   };
 
   return (
-    <div className="discription min-h-screen lg:pt-5 pt-[100px] z-50 relative">
+    <div className="discription min-h-screen lg:pt-5 pt-[100px] w-[80%] m-auto z-50 relative">
       <div className="w-full flex items-center justify-center">
         <div className="content2 text-[50px] sm:text-[70px] font-bold relative text-center">
           <h2 className="absolute font-mono">Unveiling My Journey!</h2>
@@ -39,7 +39,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="w-full grid grid-cols-1 lg:grid-cols-3 m-10 items-center justify-center">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-[3fr_1fr_1fr] m-10 items-center justify-center">
         {/* Biography Text */}
         <div className="h-full p-8 text-[#f4fdff] pr-8">
           <h1
@@ -160,11 +160,11 @@ const About = () => {
           className="h-full w-full flex justify-center items-center p-10"
         >
           <Image
-            height={500}
-            width={500}
+            height={300}
+            width={300}
             alt="avatar photo"
             src={"/pic3.png"}
-            className="border-[4px] border-white mt-[-50px] flex rounded-lg sm:mr-0 mr-20"
+            className="border-[4px] border-white mt-[-50px] flex rounded-lg sm:mr-0 mr-20 ease-in-out"
           />
         </div>
 
