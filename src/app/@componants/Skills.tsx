@@ -22,12 +22,11 @@ const Skills = () => {
         {skillsData.map((skill: any, index: any) => (
           <div
             key={index}
-            data-aos={index % 3 === 0 ? "zoom-out-right" : "zoom-out-left"}
-            // data-aos="zoom-fade"
-            className="cursor-pointer lg:h-[340px] lg:w-[160px] w-[80px] h-[120px] border-[2px] border-white rounded grid grid-rows-[1fr,2fr]"
+            data-aos={index % 2 === 0 ? "zoom-in-right" : "zoom-in-left"}
+            className="cursor-pointer lg:h-[280px] lg:w-[160px] w-[80px] h-[120px] border-[2px] border-white rounded grid grid-rows-[1fr,2fr]"
           >
             <div
-              className={`lg:w-[156px] lg:h-[150px] h-[75px]  ${skill.color}  flex justify-center items-center overflow-hidden`}
+              className={`lg:w-[159px] lg:h-[150px] h-[75px]  ${skill.color}  flex justify-center items-center overflow-hidden`}
             >
               <Image
                 src={`/${skill?.icon}`}
@@ -37,7 +36,7 @@ const Skills = () => {
                 alt="logo"
               />
             </div>
-            <div className="bg-white text-black overflow-hidden p-1">
+            <div className="bg-white text-black overflow-hidden p-1 h-[120px]">
               <p className="font-bold text-center mt-2 lg:text-[20px] text-[10px]">
                 {skill.title}
               </p>
@@ -45,7 +44,7 @@ const Skills = () => {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <p className="font-semibold lg:text-[15px] text-[8px] text-center mt-4">
+                      <p className="font-semibold lg:text-[15px] text-[8px] text-center mt-4 line-clamp-2">
                         {skill.description}
                       </p>
                     </TooltipTrigger>

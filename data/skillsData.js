@@ -81,6 +81,13 @@ const skillsData = [
     color: "text-white",
   },
   {
+    id: 17,
+    title: "mongoose",
+    description: "The library for web and native user interfaces.",
+    icon: "mongoose.png",
+    color: "text-white",
+  },
+  {
     id: 12,
     title: "Express.js",
     description: "The library for web and native user interfaces.",
@@ -89,16 +96,16 @@ const skillsData = [
   },
   {
     id: 13,
-    title: "Redux TLK",
+    title: "Redux ",
     description: "The library for web and native user interfaces.",
     icon: "redux.png",
     color: "text-white",
   },
   {
     id: 14,
-    title: "NPM",
+    title: "Postgresql",
     description: "The library for web and native user interfaces.",
-    icon: "npm.png",
+    icon: "post.png",
     color: "text-white",
   },
   {
@@ -117,9 +124,9 @@ const skillsData = [
   },
   {
     id: 17,
-    title: "mongoose",
+    title: "Ant Design",
     description: "The library for web and native user interfaces.",
-    icon: "mongoose.png",
+    icon: "ant.png",
     color: "text-white",
   },
 

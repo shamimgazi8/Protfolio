@@ -73,7 +73,7 @@ const Education = () => {
                   data-aos-duration="800"
                   className=" text-[30px] font-bold text-white mb-2"
                 >
-                  Higher Secondary School and Certifiate
+                  Full Stack Engineering
                 </h1>
                 <p
                   data-aos="fade-up"
@@ -82,7 +82,7 @@ const Education = () => {
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}
-                  2016-2018 | Milestone Collage , UTTARA.
+                  2025 | Codeworks , Project code Gulshan.
                 </p>
                 <h2
                   data-aos="fade-up"

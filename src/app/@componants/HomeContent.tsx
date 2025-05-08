@@ -12,7 +12,7 @@ const HomeContent = () => {
   return (
     <>
       <BlackWhole />
-      <div className="w-[90%] mx-auto relative z-50 lg:h-[100vh] flex flex-col justify-center items-start ">
+      <div className="w-[90%] mx-auto relative z-50 lg:h-[100dvh] flex flex-col justify-center items-start ">
         <div className=" profile mt-10 flex lg:flex-row flex-col justify-around w-full lg:p-0 ">
           <div
             data-aos="fade-right"

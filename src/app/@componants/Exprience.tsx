@@ -61,8 +61,8 @@ const Exprience = () => {
     <div className=" h-[100%] lg:w-[70%] w-[80%] mx-auto mt-[100px] relative z-50  ">
       <div className=" w-full flex items-center justify-center">
         <div className="content2 text-[40px] sm:text-[70px] font-bold relative text-center">
-          <h2 className=" absolute font-mono"> Journey in Expertise</h2>
-          <h2 className=" font-mono">Journey in Expertise</h2>
+          <h2 className=" absolute font-mono"> Exprience</h2>
+          <h2 className=" font-mono"> Exprience</h2>
         </div>
       </div>
 
@@ -89,7 +89,60 @@ const Exprience = () => {
                   data-aos-duration="800"
                   className=" text-[40px] font-bold text-white mb-2"
                 >
-                  Frontend Developer{" "}
+                  Full Stack Engineer{" "}
+                  <Link href={"https://www.google.com/"}>
+                    <span className=" text-cyan-400"> @MotoPulse </span>
+                  </Link>
+                </h1>
+                <p
+                  data-aos="fade-up"
+                  data-aos-easing="linear"
+                  data-aos-duration="1000"
+                  className=" text-[15px] text-gray-400 font-semibold mb-2"
+                >
+                  {" "}
+                  2025 (February) | Gulshan, Dhaka, BD
+                </p>
+                <h2
+                  data-aos="fade-up"
+                  data-aos-easing="linear"
+                  data-aos-duration="1600"
+                  className=" text-[20px] text-white font-semibold"
+                >
+                  <ReadMore
+                    text="Developed MotoPulse, a full-stack web application designed to help users discover, review, and compare motorcycles across various brands and types. The platform features a dynamic interface for managing bikes, user-generated reviews, comment threads, and image uploads.
+
+Key Responsibilities:
+
+Designed and implemented a RESTful API using Express.js and Sequelize (PostgreSQL) for managing motorcycles, brands, models, types, users, reviews, and comments.
+
+Built a responsive Next.js frontend with TypeScript and Tailwind CSS, focusing on performance, accessibility, and smooth user experience.
+
+Integrated JWT-based authentication for secure login and user interaction.
+
+Implemented Cloudinary integration for efficient image uploading and storage.
+
+Created advanced features including a multi-level dynamic navigation bar, like/unlike review system, and a comment system with edit/delete capabilities.
+
+Utilized GitHub for version control and followed agile development practices.
+
+Tech Stack: React, Next.js, TypeScript, Tailwind CSS, Express.js, Node.js, PostgreSQL, Sequelize, Cloudinary, JWT"
+                  />
+                </h2>
+              </div>
+            </div>
+            <div className=" mt-10  w-[100%] flex gap-5">
+              <div>
+                <VscDebugBreakpointLogUnverified className="text-[50px] text-cyan-400 mt-2" />
+              </div>
+              <div>
+                <h1
+                  data-aos="fade-up"
+                  data-aos-easing="linear"
+                  data-aos-duration="800"
+                  className=" text-[40px] font-bold text-white mb-2"
+                >
+                  Junior Software Engineer{" "}
                   <Link href={"https://www.google.com/"}>
                     <span className=" text-cyan-400"> @M4yours IT </span>
                   </Link>
@@ -97,7 +150,7 @@ const Exprience = () => {
                 <p
                   data-aos="fade-up"
                   data-aos-easing="linear"
-                  data-aos-duration="1100"
+                  data-aos-duration="1000"
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}
@@ -109,7 +162,12 @@ const Exprience = () => {
                   data-aos-duration="1600"
                   className=" text-[20px] text-white font-semibold"
                 >
-                  <ReadMore text={text1} />
+                  <ReadMore
+                    text="Responsible for developing and implementing software applications
+Designed and implemented a new software application, resulting in a 20% increase in efficiency for the department.
+Led a project to integrate third-party APIs, reducing data redundancy and improving data quality.
+Collaborated with the product team to understand their requirements and tailored solutions that enhanced product functionality."
+                  />
                 </h2>
               </div>
             </div>
@@ -126,17 +184,17 @@ const Exprience = () => {
                 >
                   MERN Stack
                   <Link href={"https://www.google.com/"}>
-                    <span className=" text-cyan-400"> @Sharmin Furniture </span>
+                    <span className=" text-cyan-400"> @Furniro </span>
                   </Link>
                 </h1>
                 <p
                   data-aos="fade-up"
                   data-aos-easing="linear"
-                  data-aos-duration="1100"
+                  data-aos-duration="1000"
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}
-                  2024 to Present | Banasree, BD.
+                  2024 | Banasree, BD.
                 </p>
                 <h2
                   data-aos="fade-up"
@@ -160,15 +218,15 @@ const Exprience = () => {
                   data-aos-duration="800"
                   className=" text-[40px] font-bold text-white mb-2"
                 >
-                  Bootcamp
+                  Frontend Engineer
                   <Link href={"https://www.google.com/"}>
-                    <span className=" text-cyan-400"> @Project Code</span>
+                    <span className=" text-cyan-400"> @24onbd</span>
                   </Link>
                 </h1>
                 <p
                   data-aos="fade-up"
                   data-aos-easing="linear"
-                  data-aos-duration="1100"
+                  data-aos-duration="1000"
                   className=" text-[15px] text-gray-400 font-semibold mb-2"
                 >
                   {" "}

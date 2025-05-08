@@ -7,7 +7,7 @@ import Skills from "./@componants/Skills";
 import Exprience from "./@componants/Exprience";
 import Education from "./@componants/Education";
 import Project from "./@componants/Projects";
-import GetConnects from "./@componants/GetConnects";
+import Footer from "./@componants/GetConnects";
 
 export default function App() {
   return (
@@ -18,10 +18,10 @@ export default function App() {
       <Exprience />
       <Education />
       <Project />
-      <GetConnects
-        upworkUrl={`https://www.upwork.com/fl/~0133a89c7b4188053f?mp_source=share`}
-        fiverrUrl={`https://www.fiverr.com/shamimgazi290?public_mode=true`}
-        email={`shamim.g47@gmail.com`}
+      <Footer
+        upworkUrl="https://www.upwork.com/fl/~0133a89c7b4188053f?mp_source=share"
+        email="shamim.g47@gmail.com"
+        fiverrUrl="https://www.fiverr.com/shamimgazi290?public_mode=true"
       />
     </div>
   );

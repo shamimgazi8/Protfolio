@@ -62,12 +62,12 @@ const NavBar = () => {
               className=" hover:scale-125  transition-all duration-300 cursor-pointer"
             />
           </Link>
-          <Link href={"shamimgazi."}>
+          <Link href={"https://www.linkedin.com/in/shamimgazi83/"}>
             <Image
               alt="home "
               height={32}
               width={35}
-              src={"/discord.png"}
+              src={"/link.webp"}
               className=" hover:scale-125 transition-all duration-300 cursor-pointer"
             />
           </Link>

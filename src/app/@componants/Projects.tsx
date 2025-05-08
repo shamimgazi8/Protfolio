@@ -10,14 +10,14 @@ import Link from "next/link";
 import { Fragment } from "react";
 const Project = () => {
   return (
-    <div className=" h-[100%] w-[80%] mt-[100px] mx-auto relative z-50 ">
+    <div className=" w-[70%] m-auto  mt-[100px] mx-auto relative z-50 ">
       <div className=" w-full flex items-center justify-center">
         <div className="content2 text-[50px] sm:text-[70px] font-bold relative">
           <h2 className=" absolute font-mono"> Projects</h2>
           <h2 className=" font-mono mb-10">Projects</h2>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-2 gap-10">
         {projects?.map((item: any, i: any) => {
           function checkSize(count: any) {
             const pattern = count % 3;
@@ -37,17 +37,17 @@ const Project = () => {
                   data-aos-duration="800"
                   className="w-full borderCurved p-8 col-span-2  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white mt-5 rounded-2xl shadow-gray-600 grid sm:grid-cols-[1fr,2fr]"
                 >
-                  <div className=" flex items-center overflow-hidden rounded-3xl lg:h-[300px]  sm:mb-0 mb-5">
-                    <div className=" rounded-[20px] overflow-hidden ">
+                  <div className="flex items-center overflow-hidden rounded-3xl lg:h-[400px] lg:w-[800px] sm:mb-0 mb-5 w-full">
+                    <div className="rounded-[20px] overflow-hidden w-full h-full relative">
                       <Image
-                        height={100}
-                        width={500}
-                        alt="cover"
                         src={item?.image}
-                        className=" cursor-pointer hover:scale-105 duration-300 border-3xl"
+                        alt="cover"
+                        fill
+                        className="object-cover cursor-pointer hover:scale-105 duration-300"
                       />
                     </div>
                   </div>
+
                   <div className=" lg:pl-10 pl-5">
                     <h1 className=" sm:text-[50px] text-[30px] text-white font-semibold cursor-pointer ">
                       {item?.title}
@@ -97,17 +97,17 @@ const Project = () => {
                   key={i}
                   className=" borderCurved  p-8 lg:col-span-1 col-span-2  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white  rounded-2xl shadow-gray-600 grid items-center"
                 >
-                  <div className=" flex items-center justify-center rounded-[20px] h-auto sm:mb-0 mb-5">
-                    <div className="lg:h-[250px] rounded-[20px] overflow-hidden ">
+                  <div className="flex items-center justify-center rounded-[20px] h-auto sm:mb-0 mb-5">
+                    <div className="w-full lg:h-[350px] h-[250px] rounded-[20px] overflow-hidden relative">
                       <Image
-                        height={100}
-                        width={500}
-                        alt="cover"
                         src={item?.image}
-                        className=" cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
+                        alt="cover"
+                        fill
+                        className="object-cover cursor-pointer hover:scale-105 duration-300 rounded-[20px]"
                       />
                     </div>
                   </div>
+
                   <div className=" pl-5">
                     <h1 className=" sm:text-[30px] text-[20px] text-white font-semibold cursor-pointer mt-3">
                       {item?.title}

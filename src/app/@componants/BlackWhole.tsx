@@ -5,7 +5,7 @@ const BlackWhole = () => {
         autoPlay
         loop
         muted
-        className=" rotate-180 absolute lg:top-[-420px] top-[-400px] md:top-[-510px] left-0 z-[1] w-full h-full object-cover sm:mt-0 mt-[-100px]"
+        className=" rotate-180 absolute lg:top-[-520px] top-[-350px] md:top-[-510px] left-0 z-[1] w-full h-full object-cover sm:mt-0 mt-[-100px]"
       >
         <source src="/blackhole.webm" type="video/webm" />
       </video>

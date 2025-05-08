@@ -1,13 +1,13 @@
 const projects = [
   {
     id: 1,
-    title: "Sharmin Furniture",
-    slug: "sharmin-furniture",
-    live: "https://sharminfurniture.com/",
+    title: "Furniro | E-commerce Website",
+    slug: "furniro",
+    live: "https://furniro-nu.vercel.app/",
     description:
-      "Furniture that everyone loves. Sharmin Furniture offers top-notch products that you can browse and buy with ease.",
-    image: "/project/shr.png",
-    github: "https://github.com/shamimgazi8/Sharmin_furniture",
+      "A Furniture App is an online platform that allows users to browse, purchase, and explore furniture collections for homes, offices, and other spaces. These apps typically combine convenience, inspiration, and customization to enhance the shopping experience.",
+    image: "/project/furniro.png",
+    github: "https://github.com/shamimgazi8/Furniro",
     buttonText: "Visit Project",
   },
   {
@@ -32,17 +32,7 @@ const projects = [
     github: "https://github.com/shamimgazi8/World-University-Hub",
     buttonText: "Visit Project",
   },
-  {
-    id: 4,
-    title: "Furniro | E-commerce Website",
-    slug: "furniro",
-    live: "https://furniro-nu.vercel.app/",
-    description:
-      "A Furniture App is an online platform that allows users to browse, purchase, and explore furniture collections for homes, offices, and other spaces. These apps typically combine convenience, inspiration, and customization to enhance the shopping experience.",
-    image: "/project/furniro.png",
-    github: "https://github.com/shamimgazi8/Furniro",
-    buttonText: "Visit Project",
-  },
+  ,
   {
     id: 9,
     title: "FlyKoro | Travel Application",
