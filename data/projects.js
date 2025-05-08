@@ -1,7 +1,7 @@
 const projects = [
   {
     id: 1,
-    title: "Furniro | E-commerce Website",
+    title: "Furniro",
     slug: "furniro",
     live: "https://furniro-nu.vercel.app/",
     description:

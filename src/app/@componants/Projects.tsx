@@ -35,51 +35,53 @@ const Project = () => {
                   data-aos="fade-up"
                   data-aos-easing="linear"
                   data-aos-duration="800"
-                  className="w-full borderCurved p-8 col-span-2  border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px]  border-white mt-5 rounded-2xl shadow-gray-600 grid sm:grid-cols-[1fr,2fr]"
+                  className="w-full borderCurved p-5 sm:p-8 col-span-2 border-r-[15px] border-b-[15px] border-t-[2px] border-l-[2px] border-white mt-5 rounded-2xl shadow-gray-600 grid grid-cols-1 md:grid-cols-[1.5fr,1fr] gap-6"
                 >
-                  <div className="flex items-center overflow-hidden rounded-3xl lg:h-[400px] lg:w-[800px] sm:mb-0 mb-5 w-full">
-                    <div className="rounded-[20px] overflow-hidden w-full h-full relative">
+                  {/* IMAGE SECTION */}
+                  <div className="w-full rounded-3xl overflow-hidden aspect-[16/10]">
+                    <div className="relative w-full h-full">
                       <Image
                         src={item?.image}
                         alt="cover"
                         fill
-                        className="object-cover cursor-pointer hover:scale-105 duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 700px"
+                        className="object-cover transition-transform duration-300 hover:scale-105"
                       />
                     </div>
                   </div>
 
-                  <div className=" lg:pl-10 pl-5">
-                    <h1 className=" sm:text-[50px] text-[30px] text-white font-semibold cursor-pointer ">
+                  {/* CONTENT SECTION */}
+                  <div className="flex flex-col justify-center lg:pl-10 pl-5">
+                    <h1 className="text-[30px] sm:text-[40px] lg:text-[50px] text-white font-semibold mb-4 cursor-pointer">
                       {item?.title}
                     </h1>
-                    <p className=" sm:text-[20px] text-[15px] text-white font-semibold ">
+                    <p className="text-[15px] sm:text-[12px] lg:text-[18px] text-white font-semibold mb-5">
                       {item?.description}
                     </p>
-                    <div className=" flex gap-8 mt-5">
-                      <FaGithub className=" text-white text-[40px] cursor-pointer" />
+
+                    <div className="flex flex-wrap items-center gap-4">
+                      <FaGithub className="text-white text-[36px] sm:text-[40px] cursor-pointer" />
 
                       <Popover>
                         <PopoverTrigger>
-                          <div>
-                            <button className="bg-white text-black font-bold p-2 rounded hover:text-white hover:bg-[#3B3C36] duration-300">
-                              Visit Project
-                            </button>
-                          </div>
+                          <button className="bg-white text-black font-bold px-4 py-2 rounded hover:text-white hover:bg-[#3B3C36] duration-300">
+                            Visit Project
+                          </button>
                         </PopoverTrigger>
                         <PopoverContent>
-                          <div className=" flex gap-5 ">
-                            <Link href={item?.github} target="blank">
-                              <button className="bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                          <div className="flex flex-col sm:flex-row gap-3 p-2">
+                            <Link href={item?.github} target="_blank">
+                              <button className="bg-black text-white font-bold px-4 py-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
                                 Code
                               </button>
                             </Link>
                             <Link href={`/preview/${item?.slug}`}>
-                              <button className=" bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                              <button className="bg-black text-white font-bold px-4 py-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
                                 Preview
                               </button>
                             </Link>
-                            <Link href={item?.live} target="blank">
-                              <button className=" bg-black text-white font-bold p-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
+                            <Link href={item?.live} target="_blank">
+                              <button className="bg-black text-white font-bold px-4 py-2 rounded hover:text-black hover:bg-[#c5c2c2] duration-300">
                                 Live
                               </button>
                             </Link>

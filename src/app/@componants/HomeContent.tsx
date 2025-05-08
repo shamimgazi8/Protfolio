@@ -13,16 +13,16 @@ const HomeContent = () => {
     <>
       <BlackWhole />
       <div className="w-[90%] mx-auto relative z-50 lg:h-[100dvh] flex flex-col justify-center items-start ">
-        <div className=" profile mt-10 flex lg:flex-row flex-col justify-around w-full lg:p-0 ">
+        <div className=" profile mt-[-50px] flex lg:flex-row flex-col justify-around w-full lg:p-0 ">
           <div
             data-aos="fade-right"
             className="flex flex-col justify-center items-center "
           >
             <Image
-              height={200}
-              width={200}
+              height={300}
+              width={300}
               alt="avater photo"
-              src={"/avater2.jpg"}
+              src={"/pic2.png"}
               className="border-[2px] border-purple-400 rounded-full flex "
             />
             <h1
@@ -41,8 +41,8 @@ const HomeContent = () => {
             className=" flex gap-[20px] flex-col items-center justify-center mt-[20px]"
           >
             <Image
-              height={80}
-              width={500}
+              height={100}
+              width={600}
               alt="skills"
               src={"/mainIconsdark.svg"}
               className="lg:ml-0 ml-[100px]"
