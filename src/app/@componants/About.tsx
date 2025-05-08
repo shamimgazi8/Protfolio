@@ -163,7 +163,7 @@ const About = () => {
             height={500}
             width={500}
             alt="avatar photo"
-            src={"/pic1.png"}
+            src={"/pic3.png"}
             className="border-[4px] border-white mt-[-50px] flex rounded-lg sm:mr-0 mr-20"
           />
         </div>

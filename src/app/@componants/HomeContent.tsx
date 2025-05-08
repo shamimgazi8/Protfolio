@@ -21,8 +21,8 @@ const HomeContent = () => {
             <Image
               height={300}
               width={300}
-              alt="avater photo"
-              src={"/pic2.png"}
+              alt="profile"
+              src={"/pic1.png"}
               className="border-[2px] border-purple-400 rounded-full flex "
             />
             <h1
