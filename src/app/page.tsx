@@ -8,6 +8,7 @@ import Exprience from "./@componants/Exprience";
 import Education from "./@componants/Education";
 import Project from "./@componants/Projects";
 import Footer from "./@componants/GetConnects";
+import StartProjectCard from "./@componants/StartProjectCard";
 
 export default function App() {
   return (
@@ -18,6 +19,9 @@ export default function App() {
       <Exprience />
       <Education />
       <Project />
+      <div className="py-20 px-4 ">
+        <StartProjectCard />
+      </div>
       <Footer
         upworkUrl="https://www.upwork.com/fl/~0133a89c7b4188053f?mp_source=share"
         email="shamim.g47@gmail.com"

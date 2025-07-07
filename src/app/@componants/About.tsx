@@ -173,17 +173,17 @@ const About = () => {
           data-aos="zoom-in-left"
           className="h-full flex justify-center items-center flex-col gap-10 sm:pr-0 pr-10"
         >
-          <div className="flex sm:items-end items-center justify-center flex-col">
+          {/* <div className="flex sm:items-end items-center justify-center flex-col">
             <p className="text-[#f4fdff] font-bold text-[60px]">
-              <AnimationNumbers value={10} />+
+              <AnimationNumbers value={3} />+
             </p>
             <p className="text-[#f4fdff] font-bold text-[20px]">
               Satisfied Clients
             </p>
-          </div>
+          </div> */}
           <div className="flex sm:items-end items-center justify-center flex-col">
             <p className="text-[#f4fdff] font-bold text-[60px]">
-              <AnimationNumbers value={20} />+
+              <AnimationNumbers value={10} />+
             </p>
             <p className="text-[#f4fdff] font-bold text-[20px]">
               Projects Completed
@@ -191,7 +191,7 @@ const About = () => {
           </div>
           <div className="flex sm:items-end items-center justify-center flex-col">
             <p className="text-[#f4fdff] font-bold text-[60px]">
-              <AnimationNumbers value={2} />+
+              <AnimationNumbers value={3} />+
             </p>
             <p className="text-[#f4fdff] font-bold text-[20px]">
               Years Of Experience

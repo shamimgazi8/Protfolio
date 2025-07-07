@@ -1,24 +1,46 @@
 const projects = [
   {
     id: 1,
-    title: "Furniro",
-    slug: "furniro",
-    live: "https://furniro-nu.vercel.app/",
+    title: "Sportinerd",
+    slug: "sportinerd",
+    live: "https://sportinerd.com/",
     description:
-      "A Furniture App is an online platform that allows users to browse, purchase, and explore furniture collections for homes, offices, and other spaces. These apps typically combine convenience, inspiration, and customization to enhance the shopping experience.",
-    image: "/project/furniro.png",
-    github: "https://github.com/shamimgazi8/Furniro",
+      "Sportinerd is your go-to sports ecosystem, delivering real-time LiveScores, in-depth sports data analytics, & the latest news across football & beyond. Engage with interactive fan challenges, unlock strategic player insights, & enjoy personalized updates.",
+    image: "/project/sportinerd.png",
+    github: "https://github.com/shamimgazi8/sportinerd",
     buttonText: "Visit Project",
   },
   {
     id: 2,
+    title: "MotoPulse",
+    slug: "motopulse",
+    live: "https://motopulse.vercel.app/",
+    description:
+      "MotoPulse is a motorcycle marketplace web app that allows users to browse bikes, explore features, and make purchases. Designed with performance in mind, it leverages modern UI/UX patterns for a seamless experience.",
+    image: "/project/moto.png",
+    github: "https://github.com/shamimgazi8/motopulse",
+    buttonText: "Visit Project",
+  },
+  {
+    id: 3,
     title: "24onbd | Online News portal",
     slug: "24onBD",
     live: "https://24onbd.com/",
     description:
-      "An Online News Portal is a digital platform that provides users with the latest news and information on various topics, including politics, business, technology, health, entertainment, sports, and more. These portals often serve as a central hub for news consumption, offering articles, videos, and interactive content.",
+      "An Online News Portal is a digital platform that provides users with the latest news and information on various topics including politics, business, technology, entertainment, and more.",
     image: "/project/24onbd.png",
     github: "https://github.com/shamimgazi8/news-2",
+    buttonText: "Visit Project",
+  },
+  {
+    id: 4,
+    title: "Immilink | Immigration Agency App",
+    slug: "immilink",
+    live: "https://immilink.com/",
+    description:
+      "Immilink is an immigration consultancy platform that helps users navigate visa and immigration processes with ease. The app includes appointment scheduling, country guides, and document management.",
+    image: "/project/immi.png",
+    github: "https://github.com/shamimgazi8/immilink",
     buttonText: "Visit Project",
   },
   {
@@ -32,9 +54,19 @@ const projects = [
     github: "https://github.com/shamimgazi8/World-University-Hub",
     buttonText: "Visit Project",
   },
-  ,
   {
-    id: 9,
+    id: 5,
+    title: "Furniro",
+    slug: "furniro",
+    live: "https://furniro-nu.vercel.app/",
+    description:
+      "A Furniture App is an online platform that allows users to browse, purchase, and explore furniture collections for homes, offices, and other spaces. These apps typically combine convenience, inspiration, and customization to enhance the shopping experience.",
+    image: "/project/furniro.png",
+    github: "https://github.com/shamimgazi8/Furniro",
+    buttonText: "Visit Project",
+  },
+  {
+    id: 6,
     title: "FlyKoro | Travel Application",
     slug: "flykoro",
     live: "https://www.flykoro.com/",
@@ -45,7 +77,7 @@ const projects = [
     buttonText: "Visit Project",
   },
   {
-    id: 5,
+    id: 7,
     title: "Mapty Project",
     slug: "mapty",
     live: "https://mapty.netlify.app/",
@@ -57,10 +89,10 @@ const projects = [
   },
 
   {
-    id: 6,
+    id: 8,
     title: "CinemaBar",
     slug: "cinemabar",
-    live: "https://mapty.netlify.app/",
+    live: "https://cinema-bar.vercel.app/",
     description:
       "CinemaBar is a rating application, where you can rate or bookmark your favorite movies and make a watched list of all your watched movies.",
     image: "/project/cine.png",
@@ -69,7 +101,7 @@ const projects = [
   },
 
   {
-    id: 7,
+    id: 9,
     title: "EasyRecipe App",
     slug: "easyrecipe",
     live: "https://easyrecipe24.netlify.app/",
@@ -81,7 +113,7 @@ const projects = [
   },
 
   {
-    id: 8,
+    id: 10,
     title: "Country Information",
     slug: "countryinfo",
     live: "https://easyrecipe24.netlify.app/",
@@ -92,7 +124,7 @@ const projects = [
     buttonText: "Visit Project",
   },
   {
-    id: 9,
+    id: 11,
     title: "Play Quiz",
     slug: "play-quiz",
     live: "https://play-quiz-pink.vercel.app/",

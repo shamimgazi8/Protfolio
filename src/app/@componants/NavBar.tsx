@@ -2,11 +2,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { CiLinkedin } from "react-icons/ci";
 import {
   slideInFromLeft,
   slideInFromRight,
   slideInFromTop,
 } from "../utils/Motion";
+import { FaLinkedin } from "react-icons/fa";
 const NavBar = () => {
   return (
     <div className=" relative  flex flex-col w-full h-[65px]  top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-50 px-10">
@@ -63,13 +65,7 @@ const NavBar = () => {
             />
           </Link>
           <Link href={"https://www.linkedin.com/in/shamimgazi83/"}>
-            <Image
-              alt="home "
-              height={32}
-              width={35}
-              src={"/link.webp"}
-              className=" hover:scale-125 transition-all duration-300 cursor-pointer"
-            />
+            <FaLinkedin className=" h-[32px] w-[32px] text-white hover:scale-125 transition-all duration-300 cursor-pointer" />
           </Link>
         </motion.div>
       </motion.div>
