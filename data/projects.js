@@ -44,7 +44,7 @@ const projects = [
     buttonText: "Visit Project",
   },
   {
-    id: 3,
+    id: 5,
     title: "World University Hub",
     slug: "world-university-hub",
     live: "https://v2.worldunihub.com/",
@@ -56,6 +56,17 @@ const projects = [
   },
   {
     id: 5,
+    title: "DEVELOP.ME",
+    slug: "develop-me",
+    live: "https://develop-me-vgdn.vercel.app/",
+    description:
+      "It is designed to provide information and data about universities around the world, offering users the ability to explore institutions based on various criteria such as country, ranking, and more.",
+    image: "/project/develop.png",
+    github: "https://github.com/shamimgazi8/DEVELOP-ME",
+    buttonText: "Visit Project",
+  },
+  {
+    id: 6,
     title: "Furniro",
     slug: "furniro",
     live: "https://furniro-nu.vercel.app/",
@@ -66,7 +77,7 @@ const projects = [
     buttonText: "Visit Project",
   },
   {
-    id: 6,
+    id: 7,
     title: "FlyKoro | Travel Application",
     slug: "flykoro",
     live: "https://www.flykoro.com/",
@@ -77,7 +88,7 @@ const projects = [
     buttonText: "Visit Project",
   },
   {
-    id: 7,
+    id: 8,
     title: "Mapty Project",
     slug: "mapty",
     live: "https://mapty.netlify.app/",
@@ -89,7 +100,7 @@ const projects = [
   },
 
   {
-    id: 8,
+    id: 9,
     title: "CinemaBar",
     slug: "cinemabar",
     live: "https://cinema-bar.vercel.app/",
@@ -101,7 +112,7 @@ const projects = [
   },
 
   {
-    id: 9,
+    id: 10,
     title: "EasyRecipe App",
     slug: "easyrecipe",
     live: "https://easyrecipe24.netlify.app/",
@@ -113,7 +124,7 @@ const projects = [
   },
 
   {
-    id: 10,
+    id: 11,
     title: "Country Information",
     slug: "countryinfo",
     live: "https://easyrecipe24.netlify.app/",
@@ -124,7 +135,7 @@ const projects = [
     buttonText: "Visit Project",
   },
   {
-    id: 11,
+    id: 12,
     title: "Play Quiz",
     slug: "play-quiz",
     live: "https://play-quiz-pink.vercel.app/",
