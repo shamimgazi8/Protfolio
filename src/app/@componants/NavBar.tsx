@@ -1,75 +1,68 @@
 "use client";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { CiLinkedin } from "react-icons/ci";
-import {
-  slideInFromLeft,
-  slideInFromRight,
-  slideInFromTop,
-} from "../utils/Motion";
-import { FaLinkedin } from "react-icons/fa";
+import Image from "next/image";
+import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { slideInFromTop } from "../utils/Motion";
+
+const NavLinks = [
+  { name: "About Me", link: "#about" },
+  { name: "Skills", link: "#skills" },
+  { name: "Projects", link: "#projects" },
+];
+
 const NavBar = () => {
   return (
-    <div className=" relative  flex flex-col w-full h-[65px]  top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-50 px-10">
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        className=" nav sm:flex sm:justify-between flex justify-center m-[15px] gap-[40px] sm:m-[15px] sm:items-center  "
-      >
-        <motion.div
-          variants={slideInFromLeft(0.5)}
-          className=" flex gap-[20px] "
-        >
-          <div className=" flex gap-[20px]">
-            <Link href={"/"}>
-              <Image
-                alt="home "
-                height={32}
-                width={35}
-                src={"/home.png"}
-                className=" hover:scale-125 transition-all duration-300 cursor-pointer"
-              />{" "}
-            </Link>
-            <Link href={"https://github.com/shamimgazi8"}>
-              <Image
-                alt="home "
-                height={32}
-                width={35}
-                src={"/git.png"}
-                className=" hover:scale-125 transition-all duration-300 cursor-pointer"
-              />
-            </Link>
-          </div>
-        </motion.div>
-        <motion.div variants={slideInFromTop}>
+    <div className="w-full h-[65px] fixed top-0 shadow-lg shadow-[#2A0E61]/50 bg-[#03001417] backdrop-blur-md z-50 px-10">
+      <div className="w-full h-full flex flex-row items-center justify-between m-auto px-[10px]">
+        {/* Logo Section */}
+        <Link href="/" className="h-auto w-auto flex flex-row items-center">
           <Image
+            src="/logo.png"
             alt="logo"
-            height={50}
             width={40}
-            src={"/logo.png"}
-            className="sm:mt-[-7px] mt-0"
+            height={40}
+            className="cursor-pointer hover:animate-slowspin"
           />
-        </motion.div>
-        <motion.div
-          variants={slideInFromRight(0.5)}
-          className=" flex gap-[20px] "
-        >
-          <Link href={"https://www.facebook.com/shamim.g47"}>
-            <Image
-              alt="home "
-              height={32}
-              width={35}
-              src={"/fb.png"}
-              className=" hover:scale-125  transition-all duration-300 cursor-pointer"
-            />
+          <span className="font-bold ml-[10px] hidden md:block text-gray-300">
+            Shamim Gazi
+          </span>
+        </Link>
+
+        {/* Center Navigation Capsule */}
+        <div className="w-[500px] h-full flex flex-row items-center justify-between md:mr-20">
+          <div className="flex items-center justify-between w-full h-auto border border-[#7042f861] bg-[#0300145e] mr-[15px] px-[20px] py-[10px] rounded-full text-gray-200">
+            {NavLinks.map((nav) => (
+              <a
+                key={nav.name}
+                href={nav.link}
+                className="cursor-pointer hover:text-[#b49bff] transition"
+              >
+                {nav.name}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Social Icons Section */}
+        <div className="flex flex-row gap-5">
+          <Link href="https://github.com/shamimgazi8" target="_blank">
+            <FaGithub className="text-white text-2xl hover:text-purple-500 transition-all scale-110 hover:scale-125" />
           </Link>
-          <Link href={"https://www.linkedin.com/in/shamimgazi83/"}>
-            <FaLinkedin className=" h-[32px] w-[32px] text-white hover:scale-125 transition-all duration-300 cursor-pointer" />
+          <Link
+            href="https://www.linkedin.com/in/shamimgazi83/"
+            target="_blank"
+          >
+            <FaLinkedin className="text-white text-2xl hover:text-blue-500 transition-all scale-110 hover:scale-125" />
           </Link>
-        </motion.div>
-      </motion.div>
+          <Link href="https://www.facebook.com/shamim.g47" target="_blank">
+            <FaFacebook className="text-white text-2xl hover:text-blue-400 transition-all scale-110 hover:scale-125" />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
+
 export default NavBar;

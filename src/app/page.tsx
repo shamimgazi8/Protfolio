@@ -12,7 +12,7 @@ import StartProjectCard from "./@componants/StartProjectCard";
 
 export default function App() {
   return (
-    <div className=" w-full">
+    <div className=" w-full ">
       <HomeContent />
       <About />
       <Skills />
