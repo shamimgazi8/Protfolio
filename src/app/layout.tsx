@@ -11,13 +11,15 @@ import "./globals.css";
 import StarsCanvas from "./@componants/StarBackGround";
 import NavBar from "./@componants/NavBar";
 
-import { LayoutProps } from "../../.next/types/app/layout";
-
 const inter = Inter({ subsets: ["latin"] });
 const caveat = Caveat({ subsets: ["latin"] });
 const montserrat = Montserrat({ subsets: ["latin"] });
 
-export default function RootLayout({ children }: LayoutProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const pathname = usePathname();
 
   useEffect(() => {
@@ -35,7 +37,6 @@ export default function RootLayout({ children }: LayoutProps) {
       <body
         className={`${inter.className} bg-[#030014] overflow-x-hidden overflow-y-scroll`}
       >
-        {shouldShowNav && <NavBar />}
         <StarsCanvas />
         <div className={montserrat.className}>{children}</div>
       </body>
