@@ -1,149 +1,143 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import dynamic from "next/dynamic";
-import { motion } from "motion/react";
-import PillNav from "@/components/ui/PillNav";
-import FluidGlass from "@/components/FluidGlass";
 
-const GridScan = dynamic(
-  () => import("@/components/GridScan").then((m) => m.GridScan),
-  { ssr: false }
-);
+import { useEffect, useState, useRef } from "react";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
+import PillNav from "@/components/ui/PillNav";
+import Hyperspeed from "@/component/Hyperspeed";
+import TargetCursor from "@/component/TargetCursor";
+import ProjectCard from "../components/ProjectCard";
+
+const HomeContent = dynamic(() => import("../@componants/HomeContent"));
 
 const tabs = ["Home", "Projects", "About", "Contact"];
 
 const PortfolioUpdate = () => {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState("Home");
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
 
-  // LOCK: Prevents Nav flicker and Jump loops
+  // Ref to prevent "blinking" during smooth scrolls
   const isManualScrolling = useRef(false);
-  const lastScrollTop = useRef(0);
 
   useEffect(() => {
     setMounted(true);
+    // Prevent document body from scrolling to avoid double scrollbars
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, []);
 
-  // 30% JUMP LOGIC (Home <-> Projects)
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    if (isManualScrolling.current) return;
-
-    const scrollTop = e.currentTarget.scrollTop;
-    const vh = window.innerHeight;
-    const isScrollingDown = scrollTop > lastScrollTop.current;
-
-    // Jump Down: Home -> Projects (at 30% scroll)
-    if (isScrollingDown && scrollTop > vh * 0.2 && scrollTop < vh) {
-      handleTabChange("Projects");
-    }
-    // Jump Up: Projects -> Home (at 70% of the way up)
-    else if (!isScrollingDown && scrollTop < vh * 0.7 && scrollTop > 0) {
-      handleTabChange("Home");
-    }
-
-    lastScrollTop.current = scrollTop;
-  };
-
-  // SCROLL-SPY: Detects sections for the PillNav
   useEffect(() => {
-    if (!mounted) return;
+    if (!mounted || !containerRef.current) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Don't update the pill if we are mid-jump or mid-click
-        if (isManualScrolling.current) return;
+    const observerOptions = {
+      root: containerRef.current,
+      threshold: 0.5,
+      rootMargin: "0px",
+    };
 
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            setActiveTab(id.charAt(0).toUpperCase() + id.slice(1));
-          }
-        });
-      },
-      { root: containerRef.current, threshold: 0.6 }
-    );
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      // Ignore observer updates if we are currently moving via a nav click
+      if (isManualScrolling.current) return;
 
-    tabs.forEach((tab) => {
-      const el = document.getElementById(tab.toLowerCase());
-      if (el) observer.observe(el);
-    });
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const tabName = id.charAt(0).toUpperCase() + id.slice(1);
+          setActiveTab(tabName);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, observerOptions);
+    const sections = containerRef.current.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, [mounted]);
 
   const handleTabChange = (tab: string) => {
-    const element = document.getElementById(tab.toLowerCase());
-    if (element) {
+    const el = document.getElementById(tab.toLowerCase());
+    if (el) {
+      // 1. Lock the observer
       isManualScrolling.current = true;
+      // 2. Update UI state immediately for responsiveness
       setActiveTab(tab);
+      // 3. Perform scroll
+      el.scrollIntoView({ behavior: "smooth" });
 
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      // Unlock after the smooth scroll duration (approx 800ms-1s)
+      // 4. Release lock after scroll finishes (approx 800ms)
       setTimeout(() => {
         isManualScrolling.current = false;
-      }, 1000);
+      }, 800);
     }
   };
 
-  if (!mounted) return <div className="bg-black h-screen w-full" />;
+  if (!mounted) return <div className="h-screen bg-black" />;
 
   return (
     <main
       ref={containerRef}
-      onScroll={handleScroll}
-      className="bg-black text-white h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth"
+      className="h-screen w-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth bg-black text-white relative no-scrollbar"
       style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
-      <div className="fixed top-0 left-0 w-full z-50 flex justify-center pt-8 pointer-events-none">
+      {/* FIXED UI ELEMENTS */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Hyperspeed />
+      </div>
+      <div className="fixed inset-0 pointer-events-none z-[9999]">
+        <TargetCursor hideDefaultCursor parallaxOn spinDuration={2} />
+      </div>
+
+      <nav className="fixed top-0 left-0 w-full z-50 flex justify-center pt-8 pointer-events-none">
         <div className="pointer-events-auto">
           <PillNav activeTab={activeTab} setActiveTab={handleTabChange} />
         </div>
-      </div>
+      </nav>
 
-      <SnapSection id="home" bgColor="bg-black">
-        <div className="absolute inset-0 h-full w-full">
-          <GridScan
-            sensitivity={0.55}
-            lineThickness={1}
-            linesColor="#392e4e"
-            gridScale={0.1}
-            scanColor="#FF9FFC"
-            scanOpacity={0.4}
-            enablePost
-            className="h-full w-full"
-            style={undefined}
-          />
+      {/* SECTIONS */}
+      <Section id="home">
+        <div className="relative z-10 h-full w-full flex items-center justify-center">
+          <HomeContent />
         </div>
-        <SectionContent title="PORTFOLIO" />
-      </SnapSection>
+      </Section>
 
-      <SnapSection id="projects" bgColor="bg-zinc-950">
-        <div className="absolute inset-0 z-0">
-          <FluidGlass
-            mode="lens"
-            lensProps={{ scale: 0.1, ior: 1.15, thickness: 5 }}
-          />
-        </div>
-        <SectionContent title="" />
-      </SnapSection>
+      <Section id="projects">
+        <div className="  z-50 h-full w-full">{Portfolio()}</div>
+      </Section>
 
-      <SnapSection id="about" bgColor="bg-black">
+      <Section id="about">
         <SectionContent title="ABOUT ME" />
-      </SnapSection>
+      </Section>
 
-      <SnapSection id="contact" bgColor="bg-zinc-950">
+      <Section id="contact">
         <SectionContent title="GET IN TOUCH" />
-      </SnapSection>
+      </Section>
+
+      {/* Inline style to hide scrollbar for Chrome/Safari */}
+      <style jsx global>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </main>
   );
 };
 
-const SnapSection = ({ id, children, bgColor }: any) => (
+/* -------------------- UI COMPONENTS -------------------- */
+
+const Section = ({
+  id,
+  children,
+}: {
+  id: string;
+  children: React.ReactNode;
+}) => (
   <section
     id={id}
-    className={`relative h-screen w-full snap-start snap-always flex items-center justify-center overflow-hidden ${bgColor}`}
+    className="h-screen w-full flex items-center justify-center snap-start snap-always flex-shrink-0"
   >
     {children}
   </section>
@@ -151,22 +145,44 @@ const SnapSection = ({ id, children, bgColor }: any) => (
 
 const SectionContent = ({ title }: { title: string }) => (
   <motion.div
-    initial={{ opacity: 0, y: 80, filter: "blur(8px)" }}
-    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-    viewport={{ once: false, amount: 0.4 }}
-    transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1], delay: 0.1 }}
-    className="relative z-10 text-center px-4"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, amount: 0.3 }}
+    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    className="text-center px-4"
   >
-    <h2 className="text-6xl md:text-9xl font-bold tracking-tighter uppercase italic">
+    <h2 className="text-2xl md:text-[10rem] font-black italic tracking-tighter uppercase leading-none">
       {title}
     </h2>
-    <motion.div
-      initial={{ width: 0 }}
-      whileInView={{ width: "100%" }}
-      transition={{ duration: 1, delay: 0.6 }}
-      className="h-[2px] bg-gradient-to-r from-transparent via-[#FF9FFC] to-transparent mt-4"
-    />
   </motion.div>
 );
 
 export default PortfolioUpdate;
+function Portfolio() {
+  const projects = [
+    {
+      title: "Sportinerd",
+      category: "WEB_APP",
+      description:
+        "Sportinerd is your go-to sports ecosystem, delivering real-time LiveScores, in-depth sports data analytics, & the latest news across football & beyond. Engage with interactive fan challenges, unlock strategic player insights, & enjoy personalized updates.",
+      tags: ["NEXT.JS", "REACT", "API", "TAILWIND CSS"],
+      image: "/project/sportinerd.png",
+    },
+    {
+      title: "MotoPulse",
+      category: "MARKETPLACE_APP",
+      description:
+        "MotoPulse is a motorcycle marketplace web app that allows users to browse bikes, explore features, and make purchases. Designed with performance in mind, it leverages modern UI/UX patterns for a seamless experience.",
+      tags: ["NEXT.JS", "REACT", "TAILWIND CSS", "CLOUDINARY"],
+      image: "/project/moto.png",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-950 p-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+      {projects.map((p) => (
+        <ProjectCard key={p.title} {...p} />
+      ))}
+    </div>
+  );
+}

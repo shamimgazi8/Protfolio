@@ -1,14 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+
 import { FaGithub } from "react-icons/fa";
 import { MdExplore } from "react-icons/md";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
 interface ProjectProps {
   project: {

@@ -4,11 +4,7 @@ import Image from "next/image";
 import projects from "./../../../data/projects";
 import { MdExplore } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+
 import Link from "next/link";
 import { Fragment } from "react";
 
