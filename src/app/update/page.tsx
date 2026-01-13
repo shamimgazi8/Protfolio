@@ -2,46 +2,42 @@
 
 import { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
+
+// Components
 import PillNav from "@/components/ui/PillNav";
-import Hyperspeed from "@/component/Hyperspeed";
-import TargetCursor from "@/component/TargetCursor";
+import TargetCursor from "@/component/TargetCursor"; // Restored
 import ProjectCard from "../components/ProjectCard";
+import DotGrid from "@/component/DotGrid"; // Restored
 
 const HomeContent = dynamic(() => import("../@componants/HomeContent"));
-
-const tabs = ["Home", "Projects", "About", "Contact"];
 
 const PortfolioUpdate = () => {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState("Home");
-  const containerRef = useRef<HTMLElement>(null);
-
-  // Ref to prevent "blinking" during smooth scrolls
-  const isManualScrolling = useRef(false);
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     setMounted(true);
-    // Prevent document body from scrolling to avoid double scrollbars
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+    lenisRef.current = lenis;
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
   }, []);
 
   useEffect(() => {
-    if (!mounted || !containerRef.current) return;
-
-    const observerOptions = {
-      root: containerRef.current,
-      threshold: 0.5,
-      rootMargin: "0px",
-    };
-
+    if (!mounted) return;
+    const observerOptions = { threshold: 0.5 };
     const callback = (entries: IntersectionObserverEntry[]) => {
-      // Ignore observer updates if we are currently moving via a nav click
-      if (isManualScrolling.current) return;
-
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
@@ -50,139 +46,213 @@ const PortfolioUpdate = () => {
         }
       });
     };
-
     const observer = new IntersectionObserver(callback, observerOptions);
-    const sections = containerRef.current.querySelectorAll("section[id]");
-    sections.forEach((section) => observer.observe(section));
-
+    document
+      .querySelectorAll("section[id]")
+      .forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, [mounted]);
 
   const handleTabChange = (tab: string) => {
-    const el = document.getElementById(tab.toLowerCase());
-    if (el) {
-      // 1. Lock the observer
-      isManualScrolling.current = true;
-      // 2. Update UI state immediately for responsiveness
-      setActiveTab(tab);
-      // 3. Perform scroll
-      el.scrollIntoView({ behavior: "smooth" });
-
-      // 4. Release lock after scroll finishes (approx 800ms)
-      setTimeout(() => {
-        isManualScrolling.current = false;
-      }, 800);
+    const target = document.getElementById(tab.toLowerCase());
+    if (target && lenisRef.current) {
+      lenisRef.current.scrollTo(target, { duration: 2 });
     }
   };
 
   if (!mounted) return <div className="h-screen bg-black" />;
 
   return (
-    <main
-      ref={containerRef}
-      className="h-screen w-full overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth bg-black text-white relative no-scrollbar"
-      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-    >
-      {/* FIXED UI ELEMENTS */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <Hyperspeed />
+    <div className="bg-black text-white selection:bg-purple-500/30 overflow-x-hidden">
+      {/* 1. RESTORED YOUR EXACT DOTGRID (Non-fixed, scrolls with page) */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+        <DotGrid
+          dotSize={5}
+          gap={30}
+          baseColor="#2f273a"
+          activeColor="#5227ff"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
       </div>
-      <div className="fixed inset-0 pointer-events-none z-[9999]">
+
+      {/* 2. RESTORED YOUR EXACT CURSOR (Fixed at very top layer) */}
+      <div className="fixed inset-0 pointer-events-none z-[99999]">
         <TargetCursor hideDefaultCursor parallaxOn spinDuration={2} />
       </div>
 
-      <nav className="fixed top-0 left-0 w-full z-50 flex justify-center pt-8 pointer-events-none">
+      {/* 3. NAVIGATION */}
+      <nav className="fixed top-0 left-0 w-full z-[100] flex justify-center pt-8 pointer-events-none">
         <div className="pointer-events-auto">
           <PillNav activeTab={activeTab} setActiveTab={handleTabChange} />
         </div>
       </nav>
 
-      {/* SECTIONS */}
-      <Section id="home">
-        <div className="relative z-10 h-full w-full flex items-center justify-center">
-          <HomeContent />
-        </div>
-      </Section>
+      <main className="relative">
+        {/* SECTION 1: HOME - 3D SCALE REVEAL */}
+        <Section id="home" zIndex="z-10">
+          <HomeParallax>
+            <HomeContent />
+          </HomeParallax>
+        </Section>
 
-      <Section id="projects">
-        <div className="  z-50 h-full w-full">{Portfolio()}</div>
-      </Section>
+        {/* SECTION 2: PROJECTS - STAGGERED REVEAL (Cards move up at different speeds) */}
+        <Section
+          id="projects"
+          zIndex="z-20"
+          className="bg-black/40 backdrop-blur-sm border-t border-white/5"
+        >
+          <ProjectsParallax />
+        </Section>
 
-      <Section id="about">
-        <SectionContent title="ABOUT ME" />
-      </Section>
+        {/* SECTION 3: ABOUT - HORIZONTAL TEXT SLIDE */}
+        <Section
+          id="about"
+          zIndex="z-30"
+          className="bg-black border-t border-white/10"
+        >
+          <AboutParallax />
+        </Section>
 
-      <Section id="contact">
-        <SectionContent title="GET IN TOUCH" />
-      </Section>
+        {/* SECTION 4: CONTACT - SCALE & FADE FLOOR */}
+        <Section id="contact" zIndex="z-40" className="bg-white text-black">
+          <ContactParallax />
+        </Section>
+      </main>
 
-      {/* Inline style to hide scrollbar for Chrome/Safari */}
       <style jsx global>{`
-        .no-scrollbar::-webkit-scrollbar {
+        ::-webkit-scrollbar {
           display: none;
         }
+        body {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          overflow-x: hidden;
+          background: black;
+        }
+        html.lenis {
+          height: auto;
+        }
+        .lenis.lenis-smooth {
+          scroll-behavior: auto !important;
+        }
       `}</style>
-    </main>
+    </div>
   );
 };
 
-/* -------------------- UI COMPONENTS -------------------- */
+/* -------------------- UNIQUE PARALLAX COMPONENTS -------------------- */
 
-const Section = ({
-  id,
-  children,
-}: {
-  id: string;
-  children: React.ReactNode;
-}) => (
-  <section
-    id={id}
-    className="h-screen w-full flex items-center justify-center snap-start snap-always flex-shrink-0"
-  >
-    {children}
-  </section>
-);
+// HOME: Content shrinks away as you scroll down
+const HomeParallax = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-const SectionContent = ({ title }: { title: string }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: false, amount: 0.3 }}
-    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-    className="text-center px-4"
-  >
-    <h2 className="text-2xl md:text-[10rem] font-black italic tracking-tighter uppercase leading-none">
-      {title}
-    </h2>
-  </motion.div>
-);
+  return (
+    <motion.div ref={ref} style={{ scale, opacity }} className="w-full">
+      {children}
+    </motion.div>
+  );
+};
 
-export default PortfolioUpdate;
-function Portfolio() {
+// PROJECTS: Grid items float up at different speeds
+const ProjectsParallax = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [200, -200]);
+
   const projects = [
     {
       title: "Sportinerd",
       category: "WEB_APP",
-      description:
-        "Sportinerd is your go-to sports ecosystem, delivering real-time LiveScores, in-depth sports data analytics, & the latest news across football & beyond. Engage with interactive fan challenges, unlock strategic player insights, & enjoy personalized updates.",
-      tags: ["NEXT.JS", "REACT", "API", "TAILWIND CSS"],
+      tags: ["NEXT.JS", "REACT"],
       image: "/project/sportinerd.png",
     },
     {
       title: "MotoPulse",
-      category: "MARKETPLACE_APP",
-      description:
-        "MotoPulse is a motorcycle marketplace web app that allows users to browse bikes, explore features, and make purchases. Designed with performance in mind, it leverages modern UI/UX patterns for a seamless experience.",
-      tags: ["NEXT.JS", "REACT", "TAILWIND CSS", "CLOUDINARY"],
+      category: "MARKETPLACE",
+      tags: ["NEXT.JS", "CLOUDINARY"],
       image: "/project/moto.png",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 p-10 grid grid-cols-1 md:grid-cols-3 gap-8">
-      {projects.map((p) => (
-        <ProjectCard key={p.title} {...p} />
+    <div
+      ref={ref}
+      className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 px-10"
+    >
+      {projects.map((p, i) => (
+        <motion.div key={p.title} style={{ y: i === 0 ? y1 : y2 }}>
+          <ProjectCard {...p} description="Scroll parallax enabled." />
+        </motion.div>
       ))}
     </div>
   );
-}
+};
+
+// ABOUT: Text slides in horizontally
+const AboutParallax = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const x = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+
+  return (
+    <motion.div ref={ref} style={{ x }} className="whitespace-nowrap">
+      <h2 className="text-6xl md:text-[15rem] font-black italic uppercase">
+        ABOUT ME • ABOUT ME • ABOUT ME
+      </h2>
+    </motion.div>
+  );
+};
+
+// CONTACT: Grows from center
+const ContactParallax = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+
+  return (
+    <motion.div ref={ref} style={{ scale }} className="text-center">
+      <h2 className="text-7xl md:text-[10rem] font-bold">GET IN TOUCH</h2>
+    </motion.div>
+  );
+};
+
+const Section = ({
+  id,
+  children,
+  zIndex,
+  className,
+}: {
+  id: string;
+  children: React.ReactNode;
+  zIndex: string;
+  className?: string;
+}) => (
+  <section
+    id={id}
+    className={`sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden ${zIndex} ${className}`}
+  >
+    {children}
+  </section>
+);
+
+export default PortfolioUpdate;

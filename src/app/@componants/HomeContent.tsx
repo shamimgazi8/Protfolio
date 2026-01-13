@@ -4,6 +4,8 @@ import { Poppins } from "next/font/google";
 import Image from "next/image";
 import TypeWritting from "./TypeWritting";
 
+import dynamic from "next/dynamic";
+
 const caveat = Poppins({ subsets: ["latin"], weight: ["600"] });
 
 const HomeContent = () => {
@@ -35,26 +37,28 @@ const HomeContent = () => {
             <TypeWritting />
           </div>
 
-          <h3 className="text-[18px] md:text-[24px] mt-3 mb-6 text-gray-400 font-medium">
-            I build things for the web<span className="text-[#f4fdff]">.</span>
+          <h3 className="text-[18px] md:text-[24px] mt-3 mb-6 text-white font-medium">
+            I build things for the web.
           </h3>
 
           <div className="flex flex-row gap-4 items-center">
-            {/* Contact Button */}
+            {/* Contact Button - Solid/Primary Style */}
             <div className="cursor-target">
               <button
                 onClick={() =>
                   (window.location.href = "mailto:shamim.g47@gmail.com")
                 }
-                className="group relative px-6 py-2.5 text-xs md:text-sm font-medium text-white transition-all duration-300"
+                className="group hover:cursor-none relative px-8 py-3 text-xs md:text-sm font-bold tracking-[0.15em] text-black hover:text-white border-white border transition-all duration-300 uppercase"
               >
-                <span className="absolute inset-0 border border-blue-500 rounded-md group-hover:bg-blue-500/10 pointer-events-none"></span>
-                <span className="absolute inset-0 bg-blue-600 rounded-md blur-[2px] opacity-0 group-hover:opacity-40 transition-opacity pointer-events-none"></span>
-                <span className="relative flex items-center gap-1.5 pointer-events-none">
+                {/* Background Layer */}
+                <span className="absolute inset-0 bg-white  group-hover:bg-black  transition-colors"></span>
+
+                {/* Content Layer */}
+                <span className="relative flex items-center gap-2">
                   Get In Touch
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -70,16 +74,16 @@ const HomeContent = () => {
               </button>
             </div>
 
-            {/* Resume Button */}
-            <div className="cursor-target">
+            {/* Resume Button - Outline/Ghost Style */}
+            <div className="cursor-target ">
               <a
                 href="/resume.pdf"
-                className="group flex items-center gap-2 px-6 py-2.5 border border-blue-300/20 text-white text-xs md:text-sm font-medium rounded-md hover:border-blue-500 hover:bg-white/5 transition-all"
+                className="hover:cursor-none group relative flex items-center gap-2 px-8 py-3 border border-white/10 text-white text-xs md:text-sm font-bold tracking-[0.15em]  hover:bg-white hover:text-black transition-all duration-300 uppercase"
               >
-                <span className="pointer-events-none">CV/Resume</span>
+                <span>CV/Resume</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-blue-400 pointer-events-none"
+                  className="h-4 w-4 opacity-50 group-hover:opacity-100"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

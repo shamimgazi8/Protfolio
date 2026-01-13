@@ -1,12 +1,13 @@
 import ElectricBorder from "@/component/ElectricBorder";
 import React from "react";
-import { ExternalLink, Github, Cpu } from "lucide-react"; // Optional: install lucide-react
+import { ExternalLink, Github, Terminal, ArrowUpRight } from "lucide-react";
 
 interface ProjectProps {
   title: string;
   category: string;
   description: string;
   tags: string[];
+  image: string; // New: Thumbnail URL
 }
 
 const ProjectCard: React.FC<ProjectProps> = ({
@@ -14,101 +15,117 @@ const ProjectCard: React.FC<ProjectProps> = ({
   category,
   description,
   tags,
+  image,
 }) => {
   return (
-    <div className="group flex justify-center items-center transition-transform duration-500 hover:scale-[1.02]">
+    <div className="group relative flex justify-center items-center">
+      {/* The Electric Border acts as the primary frame */}
       <ElectricBorder
-        color="#7df9ff"
-        speed={2}
-        chaos={0.09}
-        style={{ borderRadius: 16 }}
+        color="#6366f1"
+        speed={0.8}
+        chaos={0.1}
+        style={{ borderRadius: "24px" }}
       >
-        {/* Inner Container: Glassmorphism Effect */}
-        <div className="relative w-[320px] h-[500px] bg-slate-950/90 backdrop-blur-md rounded-[14px] p-5 flex flex-col overflow-hidden border border-white/5">
-          {/* 1. Header: Meta Data */}
-          <div className="flex justify-between items-start mb-4">
-            <div className="flex flex-col">
-              <span className="text-[10px] font-mono text-cyan-400 uppercase tracking-widest">
-                ID // {category.slice(0, 3)}_09X
-              </span>
-              <h3 className="text-xl font-bold text-white tracking-tight mt-1 group-hover:text-cyan-300 transition-colors">
+        <div className="relative w-[340px] h-[560px] bg-[#030303] rounded-[24px] p-6 flex flex-col overflow-hidden transition-all duration-500 group-hover:bg-[#080808]">
+          {/* 1. Ambient Background Glow */}
+          <div className="absolute -top-24 -right-24 w-48 h-48 bg-indigo-500/10 blur-[80px] group-hover:bg-indigo-500/20 transition-all duration-700 pointer-events-none" />
+
+          {/* 2. Header Section */}
+          <div className="relative z-10 flex justify-between items-start mb-6">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <Terminal size={12} className="text-indigo-400" />
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em]">
+                  REF // {category}
+                </span>
+              </div>
+              <h3 className="text-2xl font-bold text-white tracking-tight mt-1 uppercase italic">
                 {title}
               </h3>
             </div>
-            <Cpu className="w-5 h-5 text-cyan-500/50 animate-pulse" />
+            <div className="px-2 py-1 rounded-full border border-white/5 bg-white/5 backdrop-blur-md">
+              <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+            </div>
           </div>
 
-          {/* 2. Visual Area: Holographic Preview */}
-          <div className="relative w-full h-44 bg-black rounded-lg mb-4 border border-cyan-500/20 group-hover:border-cyan-500/50 transition-all overflow-hidden bg-[url('https://grainy-gradients.vercel.app/noise.svg')]">
-            {/* Scanned Image Placeholder */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-full h-full bg-gradient-to-br from-cyan-500/10 to-purple-500/10" />
-              <span className="absolute text-[10px] font-mono text-cyan-400/40 uppercase">
-                System_Preview.exe
-              </span>
-            </div>
+          {/* 3. Visual Thumbnail Area */}
+          <div className="relative w-full h-48 bg-zinc-900 rounded-xl mb-6 overflow-hidden border border-white/5 group-hover:border-indigo-500/30 transition-colors duration-500">
+            {/* Project Image */}
+            <img
+              src={image}
+              alt={title}
+              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700 ease-out"
+            />
 
-            {/* Animated Scanning Line */}
-            <div className="absolute inset-0 w-full h-[2px] bg-cyan-400/30 shadow-[0_0_15px_rgba(125,249,255,0.8)] animate-[scan_2.5s_linear_infinite]" />
+            {/* Visual Overlays: Noise and Gradient mask */}
+            <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-transparent opacity-80" />
+
+            {/* Scanning line */}
+            <div className="absolute inset-0 w-full h-[2px] bg-gradient-to-r from-transparent via-indigo-400/50 to-transparent animate-[scan_3s_ease-in-out_infinite] z-20" />
+
+            {/* Hover Icon overlay */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
+                <ArrowUpRight size={18} className="text-white" />
+              </div>
+            </div>
           </div>
 
-          {/* 3. Description: Tactical Text */}
-          <div className="flex-grow">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="h-[1px] w-4 bg-cyan-500/50"></div>
-              <span className="text-[10px] font-mono text-slate-500 uppercase">
-                Description
+          {/* 4. Description */}
+          <div className="relative z-10 flex-grow">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[10px] font-bold text-indigo-400/80 uppercase tracking-widest">
+                Brief
               </span>
+              <div className="h-[1px] flex-grow bg-white/5"></div>
             </div>
-            <p className="text-sm text-slate-300 leading-relaxed font-sans opacity-90">
+            <p className="text-[14px] text-zinc-400 leading-relaxed font-light group-hover:text-zinc-200 transition-colors duration-300">
               {description}
             </p>
           </div>
 
-          {/* 4. Tech Stack: Tags */}
-          <div className="mt-4">
-            <div className="flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[9px] px-2 py-1 rounded-sm bg-cyan-500/5 border border-cyan-500/20 text-cyan-400 font-mono"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* 5. Footer: Action Buttons */}
-          <div className="mt-6 grid grid-cols-2 gap-3">
-            <button className=" cursor-target flex items-center justify-center gap-2 py-2 text-[11px] font-mono border border-slate-700 bg-slate-900/50 text-slate-300 hover:bg-slate-800 hover:text-white transition-all rounded-md">
-              <Github className="w-3 h-3" /> SOURCE
-            </button>
-            <button className=" cursor-target relative group/btn overflow-hidden py-2 text-[11px] font-mono bg-cyan-500 text-black font-bold rounded-md transition-all hover:shadow-[0_0_15px_rgba(125,249,255,0.6)]">
-              <span className=" relative z-10 flex items-center justify-center gap-1">
-                DEPLOY <ExternalLink className="w-3 h-3" />
+          {/* 5. Tech Stack Tags */}
+          <div className="relative z-10 mt-6 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-2 py-0.5 text-[9px] text-zinc-500 bg-zinc-900/50 border border-white/5 rounded font-mono hover:text-indigo-300 transition-colors"
+              >
+                #{tag}
               </span>
-            </button>
+            ))}
           </div>
 
-          {/* Decorative Corner Accents */}
-          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-cyan-500/20 rounded-tr-xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-cyan-500/20 rounded-bl-xl pointer-events-none" />
+          {/* 6. Footer Actions */}
+          <div className="relative z-10 mt-8 flex gap-2">
+            <button className=" cursor-target hover:cursor-none flex-1 flex items-center justify-center gap-2 bg-transparent border border-white/10 py-3 text-[10px] font-bold tracking-[0.2em] text-zinc-400 hover:bg-zinc-900 hover:text-white transition-all uppercase">
+              <Github size={14} />
+              Code
+            </button>
+            <button className="cursor-target hover:cursor-none flex-1 flex items-center justify-center gap-2 bg-white py-3 g text-[10px] font-bold tracking-[0.2em] text-black hover:bg-indigo-500 hover:text-white transition-all uppercase">
+              Live
+              <ExternalLink size={14} />
+            </button>
+          </div>
         </div>
       </ElectricBorder>
 
-      {/* Tailwind Animation for the scanning line */}
+      {/* Animation Styles */}
       <style jsx global>{`
         @keyframes scan {
           0% {
             transform: translateY(-10px);
             opacity: 0;
           }
-          50% {
+          20% {
+            opacity: 1;
+          }
+          80% {
             opacity: 1;
           }
           100% {
-            transform: translateY(176px);
+            transform: translateY(192px);
             opacity: 0;
           }
         }

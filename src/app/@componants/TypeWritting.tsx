@@ -1,8 +1,6 @@
-import RotatingText from "@/component/RotatingText";
-import { motion } from "framer-motion";
 import { useTypewriter } from "react-simple-typewriter";
 const TypeWritting = () => {
-  const [text, count] = useTypewriter({
+  const [text] = useTypewriter({
     words: [
       "Full Stack web developer.",
       "Front-end developer",
@@ -10,13 +8,12 @@ const TypeWritting = () => {
       "TypeScript Enthusiast",
     ],
     loop: true,
-    delaySpeed: 2000,
+    delaySpeed: 1500,
   });
   return (
-    <div className=" text-cyan-400 font-[600] sm:text-[20px] ">
-      <span className="text-[#f4fdff]"> Im a </span>
+    <div className=" text-violet-400 font-[600] sm:text-[20px] h-[25px] ">
+      <span className="text-[#f4fdff]"> </span>
       {text}
-      {/* <TypeErittingUpdat /> */}
     </div>
   );
 };

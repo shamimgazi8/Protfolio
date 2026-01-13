@@ -9,7 +9,7 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 const Project = () => {
-  const visibleProjects = projects.slice(0, 3); // Only show first 5 projects
+  const visibleProjects = projects.slice(0, 3);
 
   function checkSize(count: number) {
     const pattern = count % 3;
