@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 
-const tabs = ["Home", "Projects", "About", "Contact"];
+const tabs = ["home", "about", "services", "projects", "contact"];
 
 interface PillNavProps {
   activeTab: string;
@@ -36,10 +35,8 @@ const PillNav = ({ activeTab, setActiveTab }: PillNavProps) => {
               />
             )}
 
-            {/* The Text */}
             <span className="relative z-10">{tab}</span>
 
-            {/* Pixel-style accent: Only visible on hover or active if you want */}
             {!isActive && (
               <div className="absolute inset-0  border border-transparent hover:border-white/10 transition-colors" />
             )}
