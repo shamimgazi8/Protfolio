@@ -76,7 +76,7 @@ const ServiceGrid = () => {
           </div>
           <div className="h-[1px] flex-1 bg-zinc-800 hidden md:block mx-12 mb-4" />
           <div className="text-right">
-            <span className="text-white/20 font-black text-8xl italic select-none">
+            <span className="text-white/20 font-black text-2xl italic select-none">
               SERVICES
             </span>
           </div>

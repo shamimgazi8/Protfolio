@@ -16,18 +16,22 @@ import StandardProjects from "./components/Projects";
 import StatsSection from "./components/StateSection";
 import ContactSection from "./components/ContactSection";
 import ServiceGrid from "./components/ServicesGrid";
+import InfinityBanner from "./components/InfinityBanner";
 
 const HomeContent = dynamic(() => import("../@componants/HomeContent"));
 
 const PortfolioUpdate = () => {
   const [mounted, setMounted] = useState(false);
-  const [activeTab, setActiveTab] = useState("home"); // Keep lowercase
+  const [activeTab, setActiveTab] = useState("home");
   const lenisRef = useRef<Lenis | null>(null);
+
+  // This ref prevents the scroll observer from fighting the click handler
+  const isManualScrollRef = useRef(false);
 
   useEffect(() => {
     setMounted(true);
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
@@ -41,30 +45,26 @@ const PortfolioUpdate = () => {
     return () => lenis.destroy();
   }, []);
 
-  // Standardized Scroll Observer
-  // Inside PortfolioUpdate.tsx
-
   useEffect(() => {
     if (!mounted) return;
 
     const observerOptions = {
-      // This tells the browser: "Trigger if the element is in the top 40% of the screen"
-      rootMargin: "-10% 0px -60% 0px",
-      threshold: [0, 0.1, 0.2],
+      // Focuses the trigger area to the upper-middle of the screen
+      rootMargin: "-25% 0px -45% 0px",
+      threshold: 0,
     };
 
     const callback = (entries: IntersectionObserverEntry[]) => {
-      // We look for the FIRST entry that is currently intersecting
-      const visibleSection = entries.find((entry) => entry.isIntersecting);
+      // If we clicked a nav item, ignore the observer until the scroll finishes
+      if (isManualScrollRef.current) return;
 
+      const visibleSection = entries.find((entry) => entry.isIntersecting);
       if (visibleSection) {
-        const id = visibleSection.target.id.toLowerCase();
-        setActiveTab(id);
+        setActiveTab(visibleSection.target.id);
       }
     };
 
     const observer = new IntersectionObserver(callback, observerOptions);
-
     const sectionIds = ["home", "about", "services", "projects", "contact"];
 
     sectionIds.forEach((id) => {
@@ -74,12 +74,23 @@ const PortfolioUpdate = () => {
 
     return () => observer.disconnect();
   }, [mounted]);
+
   const handleTabChange = (tab: string) => {
     const target = document.getElementById(tab.toLowerCase());
     if (target && lenisRef.current) {
+      // Lock the observer
+      isManualScrollRef.current = true;
+      setActiveTab(tab.toLowerCase());
+
       lenisRef.current.scrollTo(target, {
-        offset: -80, // Accounts for the height of your PillNav
-        duration: 1.2,
+        offset: -20,
+        duration: 1.5,
+        onComplete: () => {
+          // Release the observer lock shortly after completion
+          setTimeout(() => {
+            isManualScrollRef.current = false;
+          }, 150);
+        },
       });
     }
   };
@@ -88,7 +99,6 @@ const PortfolioUpdate = () => {
 
   return (
     <div className="bg-black text-white selection:bg-purple-500/30 overflow-x-hidden">
-      {/* DOTGRID Background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         <DotGrid
           dotSize={5}
@@ -114,8 +124,7 @@ const PortfolioUpdate = () => {
       </nav>
 
       <main className="relative">
-        {/* HOME */}
-        <div id="home" className="scroll-mt-20">
+        <div id="home" className="scroll-mt-10">
           <Section id="home-inner" zIndex="z-10">
             <HomeParallax>
               <HomeContent />
@@ -123,8 +132,7 @@ const PortfolioUpdate = () => {
           </Section>
         </div>
 
-        {/* ABOUT */}
-        <div id="about" className="scroll-mt-20">
+        <div id="about" className="scroll-mt-10">
           <Section
             id="about-inner"
             zIndex="z-30"
@@ -133,25 +141,23 @@ const PortfolioUpdate = () => {
             <AboutParallax />
           </Section>
         </div>
+        <InfinityBanner text="Let's build something epic" baseVelocity={0.8} />
 
-        {/* SERVICES - Ensure this div is seen as a whole block */}
         <div
           id="services"
-          className="relative z-[35] scroll-mt-24 min-h-screen"
+          className="relative z-[35] scroll-mt-10 min-h-screen"
         >
           <ServiceGrid />
           <WhyMeAndFeedback />
           <WhatIDo />
         </div>
 
-        {/* PROJECTS */}
-        <div id="projects" className="relative z-30 scroll-mt-24 min-h-screen">
+        <div id="projects" className="relative z-30 scroll-mt-10 min-h-screen">
           <StandardProjects />
           <StatsSection />
         </div>
 
-        {/* CONTACT */}
-        <div id="contact" className="relative z-30 scroll-mt-24 min-h-screen">
+        <div id="contact" className="relative z-30 scroll-mt-10 min-h-[50vh]">
           <ContactSection />
         </div>
       </main>
@@ -177,7 +183,6 @@ const PortfolioUpdate = () => {
   );
 };
 
-// ... HomeParallax and Section components remain the same ...
 const HomeParallax = ({ children }: { children: React.ReactNode }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -206,8 +211,7 @@ const Section = ({
 }) => (
   <section
     id={id}
-    // Changed h-screen to min-h-screen and removed overflow-hidden
-    className={`relative min-h-screen w-full flex items-center justify-center  ${zIndex} ${className}`}
+    className={`relative min-h-screen w-full flex items-center justify-center ${zIndex} ${className}`}
   >
     {children}
   </section>
