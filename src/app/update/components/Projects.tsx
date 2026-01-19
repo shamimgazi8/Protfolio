@@ -44,7 +44,7 @@ const StandardProjects = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <section className="bg-zinc-50 py-32 px-6">
+    <section className="bg-zinc-200 py-32 px-6">
       <div className="max-w-7xl mx-auto">
         {/* --- HEADER SECTION --- */}
         <div className="mb-32 flex flex-col md:flex-row md:items-end justify-between border-b border-zinc-200 pb-12">

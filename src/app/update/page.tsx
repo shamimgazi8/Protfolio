@@ -24,7 +24,7 @@ const PortfolioUpdate = () => {
   const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
   const lenisRef = useRef<Lenis | null>(null);
-
+  const [isDarkSection, setIsDarkSection] = useState(false);
   // This ref prevents the scroll observer from fighting the click handler
   const isManualScrollRef = useRef(false);
 

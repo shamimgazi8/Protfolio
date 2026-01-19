@@ -61,7 +61,7 @@ const WhyMeAndFeedback = () => {
   ];
 
   return (
-    <section className="w-full bg-zinc-200 py-[100px] px-6 text-zinc-900 overflow-hidden">
+    <section className="w-full bg-zinc-300 py-[100px] px-6 text-zinc-900 overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"

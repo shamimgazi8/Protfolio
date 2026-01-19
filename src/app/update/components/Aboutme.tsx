@@ -147,7 +147,7 @@ const AboutParallax = () => {
                     whileHover={{ x: 10, scale: 1.02 }}
                     className="relative group cursor-default transition-all duration-300"
                   >
-                    <div className="absolute -left-[29px] top-1.5 w-1.5 h-1.5 rounded-full bg-indigo-900 group-hover:bg-indigo-500 group-hover:shadow-[0_0_8px_#6366f1] transition-all" />
+                    <div className="absolute -left-[27.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-indigo-900 group-hover:bg-indigo-500 group-hover:shadow-[0_0_8px_#6366f1] transition-all" />
                     <span className="text-[10px] text-zinc-600 font-mono group-hover:text-indigo-400 transition-colors">
                       {edu.year}
                     </span>
@@ -191,7 +191,7 @@ const AboutParallax = () => {
                     whileHover={{ x: 10, scale: 1.02 }}
                     className="relative group cursor-default transition-all duration-300"
                   >
-                    <div className="absolute -left-[29px] top-1.5 w-1.5 h-1.5 rounded-full bg-emerald-900 group-hover:bg-emerald-500 group-hover:shadow-[0_0_8px_#10b981] transition-all" />
+                    <div className="absolute -left-[27.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-emerald-900 group-hover:bg-emerald-500 group-hover:shadow-[0_0_8px_#10b981] transition-all" />
                     <span className="text-[10px] text-zinc-600 font-mono group-hover:text-emerald-400 transition-colors">
                       {exp.year}
                     </span>
