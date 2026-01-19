@@ -37,7 +37,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-[#030014] overflow-x-hidden overflow-y-scroll`}
       >
-        <StarsCanvas />
+        {/* <StarsCanvas /> */}
         <div className={montserrat.className}>{children}</div>
       </body>
     </html>

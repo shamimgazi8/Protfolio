@@ -118,7 +118,7 @@ const WhatIDo = () => {
               key={index}
               variants={cardVariants}
               whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.02)" }}
-              className="group bg-[#030303] p-10 transition-all duration-500 relative overflow-hidden"
+              className="cursor-target group bg-[#030303] p-10 transition-all duration-500 relative overflow-hidden"
             >
               {/* Corner Accent */}
               <div

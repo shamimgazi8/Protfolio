@@ -1,206 +1,311 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Github, Plus } from "lucide-react";
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, useSpring, useMotionValue } from "framer-motion";
+import {
+  ArrowUpRight,
+  Cpu,
+  Globe,
+  LucideIcon,
+  Zap,
+  Smartphone,
+  Plus,
+} from "lucide-react";
 
-const projects = [
-  {
-    title: "Sportinerd",
-    type: "Full-Stack SaaS",
-    desc: "A high-performance athletic tracking platform. Architected with a NestJS microservices backend and a Next.js frontend for maximum scalability.",
-    tags: ["Next.js", "NestJS", "Prisma", "PostgreSQL"],
-    image:
-      "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200",
-  },
-  {
-    title: "MotoPulse",
-    type: "E-Commerce",
-    desc: "A premium motorcycle marketplace featuring real-time inventory updates, secure payment integration, and a custom-built CMS.",
-    tags: ["React", "Stripe", "MongoDB", "Tailwind"],
-    image:
-      "https://images.unsplash.com/photo-1558981403-c5f91cbba527?q=80&w=1200",
-  },
-  {
-    title: "Nexus AI",
-    type: "AI Content Engine",
-    desc: "Advanced content generation engine utilizing OpenAI's GPT-4. Features streaming responses and dynamic vector-based prompt engineering.",
-    tags: ["OpenAI", "TypeScript", "Redis", "VectorDB"],
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200",
-  },
-  {
-    title: "FinTrack",
-    type: "Fintech",
-    desc: "A secure financial dashboard providing real-time data visualization and automated expense tracking for enterprises.",
-    tags: ["D3.js", "Node.js", "AWS", "Docker"],
-    image:
-      "https://images.unsplash.com/photo-1551288049-bbbda536639a?q=80&w=1200",
-  },
-];
+// --- UPDATED CUSTOM CURSOR (LIQUID GLASS EFFECT) ---
+const CustomCursor = ({ hoveredId }: { hoveredId: number | string | null }) => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
-const StandardProjects = () => {
-  const [showAll, setShowAll] = useState(false);
+  const springConfig = { damping: 25, stiffness: 250 };
+  const cursorX = useSpring(mouseX, springConfig);
+  const cursorY = useSpring(mouseY, springConfig);
 
-  // Initially show only 3 projects
-  const displayedProjects = showAll ? projects : projects.slice(0, 3);
-
-  return (
-    <section className="bg-zinc-200 py-32 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* --- HEADER SECTION --- */}
-        <div className="mb-32 flex flex-col md:flex-row md:items-end justify-between border-b border-zinc-200 pb-12">
-          <div>
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-indigo-600 font-mono text-xs tracking-[0.4em] uppercase mb-4 block"
-            >
-              Case Studies
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              viewport={{ once: true }}
-              className="text-7xl md:text-9xl font-black text-black uppercase italic leading-[0.8]"
-            >
-              Selected <br /> Works
-            </motion.h2>
-          </div>
-          <div className="mt-8 md:mt-0 max-w-xs">
-            <p className="text-zinc-500 text-sm font-medium leading-relaxed">
-              A curated collection of digital experiences focusing on technical
-              excellence and user-centric design.
-            </p>
-          </div>
-        </div>
-
-        {/* --- PROJECT LIST --- */}
-        <div className="space-y-48">
-          <AnimatePresence mode="popLayout">
-            {displayedProjects.map((project, i) => (
-              <ProjectItem key={project.title} project={project} index={i} />
-            ))}
-          </AnimatePresence>
-        </div>
-
-        {/* --- SEE MORE BUTTON --- */}
-        <AnimatePresence>
-          {!showAll && projects.length > 3 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              viewport={{ once: true }}
-              className="mt-32 flex justify-center"
-            >
-              <motion.button
-                onClick={() => setShowAll(true)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative flex items-center gap-4 bg-black text-white px-10 py-6 rounded-full overflow-hidden transition-all"
-              >
-                {/* Background Hover Slide */}
-                <div className="absolute inset-0 bg-indigo-600 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-300" />
-
-                <span className="relative z-10 font-black uppercase italic tracking-widest text-sm">
-                  See All Projects
-                </span>
-                <div className="relative z-10 bg-white/20 rounded-full p-1 group-hover:rotate-90 transition-transform duration-300">
-                  <Plus size={20} />
-                </div>
-              </motion.button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </section>
-  );
-};
-
-const ProjectItem = ({ project, index }: any) => {
-  const isEven = index % 2 === 0;
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
 
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`flex flex-col ${
-        isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-      } gap-16 items-start`}
+      className="pointer-events-none cursor-none fixed top-0 left-0 z-50 flex items-center justify-center rounded-full"
+      style={{
+        x: cursorX,
+        y: cursorY,
+        translateX: "-50%",
+        translateY: "-50%",
+        // Apple Liquid Glass is a combination of blur, contrast, and saturation
+        backdropFilter: hoveredId
+          ? "blur(12px) saturate(180%) contrast(90%)"
+          : "none",
+        WebkitBackdropFilter: hoveredId
+          ? "blur(12px) saturate(180%) contrast(90%)"
+          : "none",
+        border: hoveredId ? "1.5px solid rgba(255, 255, 255, 0.4)" : "none",
+        background: hoveredId
+          ? "radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 80%)"
+          : "rgba(0, 122, 255, 1)", // Standard Apple Blue for the dot
+      }}
+      animate={{
+        width: hoveredId ? 75 : 8,
+        height: hoveredId ? 75 : 8,
+
+        boxShadow: hoveredId
+          ? "0 10px 30px rgba(0,0,0,0.1), inset 0 0 10px rgba(255,255,255,0.2)"
+          : "0 0 0px rgba(0,0,0,0)",
+      }}
     >
-      {/* 1. Project Image */}
-      <div className="w-full lg:w-7/12 relative group">
-        <div className="relative aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-3xl bg-zinc-200 shadow-2xl shadow-zinc-200/50 transition-shadow group-hover:shadow-indigo-500/10">
-          <motion.img
-            whileHover={{ scale: 1.03 }}
-            transition={{ duration: 0.6 }}
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700"
-          />
-          <div className="absolute inset-0 bg-indigo-600/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-        </div>
+      {/* The Specular Highlight (The "Shine" on top of the glass) */}
+      {hoveredId && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="absolute inset-0 rounded-full bg-[conic-gradient(from_225deg_at_50%_50%,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_25%,rgba(255,255,255,0)_50%)]"
+        />
+      )}
 
-        {/* Vertical Indicator */}
-        <div className="absolute -bottom-6 -right-6 md:right-10 bg-white p-6 rounded-2xl shadow-xl hidden md:block border border-zinc-100">
-          <p className="text-black font-black text-xl italic uppercase">
-            0{index + 1}
-          </p>
-        </div>
-      </div>
-
-      {/* 2. Project Details */}
-      <div className="w-full lg:w-5/12 pt-4">
-        <div className="flex items-center gap-3 mb-8">
-          <span className="bg-black text-white text-[10px] px-2 py-0.5 font-bold uppercase tracking-wider">
-            {project.type}
-          </span>
-        </div>
-
-        <h3 className="text-5xl md:text-6xl font-black text-black uppercase italic mb-8 leading-tight tracking-tighter">
-          {project.title}
-        </h3>
-
-        <p className="text-zinc-600 text-lg leading-relaxed mb-10 font-medium">
-          {project.desc}
-        </p>
-
-        <div className="flex flex-wrap gap-2 mb-12">
-          {project.tags.map((tag: any) => (
-            <span
-              key={tag}
-              className="text-[11px] font-mono text-zinc-400 font-semibold uppercase tracking-tighter"
-            >
-              #{tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-8 border-t border-zinc-200 pt-8">
-          <motion.button
-            whileHover={{ gap: "1.5rem" }}
-            className="flex items-center gap-4 text-black font-black uppercase text-sm tracking-widest group"
-          >
-            Explore Project
-            <div className="w-10 h-10 rounded-full border border-black flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all">
-              <ArrowUpRight size={20} />
-            </div>
-          </motion.button>
-
-          <a
-            href="#"
-            className="text-zinc-300 hover:text-black transition-colors"
-          >
-            <Github size={24} />
-          </a>
-        </div>
-      </div>
+      {/* The "View" Label */}
+      {hoveredId && (
+        <motion.span
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="relative z-10 text-[10px] font-semibold uppercase tracking-[0.2em] text-black/70"
+        >
+          View
+        </motion.span>
+      )}
     </motion.div>
   );
 };
 
-export default StandardProjects;
+// --- REST OF YOUR COMPONENT (UNCHANGED) ---
+
+interface Project {
+  id: number | string;
+  title: string;
+  category: string;
+  size: string;
+  description: string;
+  icon: LucideIcon;
+  tech?: string[];
+  image?: string;
+  href: string;
+}
+
+const projects: Project[] = [
+  {
+    id: 1,
+    title: "NeuroFlow AI",
+    category: "Machine Learning",
+    size: "large",
+    description:
+      "A real-time neural interface for predictive workflow automation.",
+    icon: Cpu,
+    tech: ["Next.js", "Python"],
+    image:
+      "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1000",
+    href: "/projects/neuroflow",
+  },
+  {
+    id: 2,
+    title: "EcoPulse",
+    category: "IoT",
+    size: "medium",
+    description: "Monitoring global carbon emissions.",
+    icon: Globe,
+    tech: ["D3.js", "AWS"],
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800",
+    href: "/projects/ecopulse",
+  },
+  {
+    id: 3,
+    title: "Titan Wallet",
+    category: "Fintech",
+    size: "small",
+    description: "Next-gen encryption.",
+    icon: Zap,
+    tech: ["Solidity"],
+    image:
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=600",
+    href: "/projects/titan",
+  },
+  {
+    id: 4,
+    title: "Orbit App",
+    category: "Mobile",
+    size: "medium",
+    description: "Social networking for space.",
+    icon: Smartphone,
+    tech: ["Firebase"],
+    image:
+      "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800",
+    href: "/projects/orbit",
+  },
+  {
+    id: "btn-more",
+    title: "View All Projects",
+    category: "Discovery",
+    size: "small",
+    description: "Explore the full archive of experimental works.",
+    icon: Plus,
+    href: "/projects",
+  },
+];
+
+const cardVariants = {
+  offscreen: { opacity: 0, y: 50, scale: 0.95 },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", bounce: 0.4, duration: 0.8 },
+  },
+};
+
+export default function SmartProjectPage() {
+  const [hoveredId, setHoveredId] = useState<number | string | null>(null);
+
+  return (
+    <div className="min-h-screen bg-[#F2F2F7] text-[#1D1D1F] p-4 md:p-8 lg:p-12 cursor-none">
+      <CustomCursor hoveredId={hoveredId} />
+
+      <div className="max-w-7xl mx-auto">
+        <motion.header
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+        >
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full shadow-sm border border-gray-200 text-xs font-bold uppercase tracking-tighter">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              Available for Innovation
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+              Project Hub<span className="text-blue-600">.</span>
+            </h1>
+          </div>
+        </motion.header>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 h-full md:h-[720px]">
+          {projects.map((project) => (
+            <Link
+              key={project.id}
+              href={project.href}
+              className={`block h-full transition-transform active:scale-95  cursor-none
+                ${project.size === "large" ? "md:col-span-2 md:row-span-2" : ""}
+                ${project.size === "medium" ? "md:col-span-2 md:row-span-1" : ""}
+                ${project.size === "small" ? "md:col-span-2 md:row-span-1" : ""}
+              `}
+            >
+              <motion.div
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={cardVariants}
+                onMouseEnter={() => setHoveredId(project.id)}
+                onMouseLeave={() => setHoveredId(null)}
+                className={`relative h-full overflow-hidden rounded-[2rem] border transition-all duration-500 shadow-sm hover:shadow-2xl 
+                  ${
+                    project.id === "btn-more"
+                      ? "bg-blue-600 border-blue-500 hover:bg-blue-700"
+                      : "bg-white border-gray-200 hover:border-blue-200"
+                  }
+                `}
+              >
+                {project.image && (
+                  <div className="absolute inset-0 z-0">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className={`w-full h-full object-cover transition-transform duration-700
+                        ${hoveredId === project.id ? "scale-110" : "scale-100"}
+                      `}
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br from-white/90 via-white/20 to-transparent transition-opacity duration-500
+                      ${hoveredId === project.id ? "opacity-30" : "opacity-100"}`}
+                    />
+                  </div>
+                )}
+
+                <div className="relative z-10 p-6 h-full flex flex-col justify-between">
+                  <div className="flex justify-between items-start">
+                    <div
+                      className={`p-3 backdrop-blur-md rounded-2xl shadow-sm border 
+                      ${project.id === "btn-more" ? "bg-white/20 border-white/30" : "bg-white/90 border-white/50"}`}
+                    >
+                      <project.icon
+                        className={
+                          project.id === "btn-more"
+                            ? "text-white"
+                            : "text-blue-600"
+                        }
+                        size={24}
+                      />
+                    </div>
+                    <motion.div
+                      animate={{ rotate: hoveredId === project.id ? 45 : 0 }}
+                      className={`p-2 rounded-full shadow-lg ${project.id === "btn-more" ? "bg-white text-blue-600" : "bg-black text-white"}`}
+                    >
+                      <ArrowUpRight size={20} />
+                    </motion.div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p
+                      className={`text-xs font-bold uppercase tracking-widest 
+                      ${project.id === "btn-more" ? "text-blue-100" : "text-blue-600"}`}
+                    >
+                      {project.category}
+                    </p>
+                    <h3
+                      className={`font-bold tracking-tight leading-none 
+                      ${project.id === "btn-more" ? "text-white" : "text-[#1D1D1F]"}
+                     ${project.size === "large" ? "text-4xl" : "text-xl"}
+xl"}`}
+                    >
+                      {project.title}
+                    </h3>
+
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{
+                        height: hoveredId === project.id ? "auto" : 0,
+                        opacity: hoveredId === project.id ? 1 : 0,
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <p
+                        className={`text-sm mt-2 max-w-sm ${project.id === "btn-more" ? "text-blue-50" : "text-gray-600"}`}
+                      >
+                        {project.description}
+                      </p>
+                      {project.tech && (
+                        <div className="flex gap-2 mt-4">
+                          {project.tech.map((t) => (
+                            <span
+                              key={t}
+                              className="px-2 py-1 bg-black/5 text-[10px] font-bold rounded-md"
+                            >
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

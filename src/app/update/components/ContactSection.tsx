@@ -92,7 +92,7 @@ const ContactSection = () => {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full bg-black text-white py-5 rounded-2xl font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 transition-colors hover:bg-zinc-800"
+              className="cursor-target w-full bg-black text-white py-5 rounded-2xl font-bold uppercase tracking-[0.2em] text-xs flex items-center justify-center gap-3 transition-colors hover:bg-zinc-800"
             >
               Send Message <Send size={16} />
             </motion.button>

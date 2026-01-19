@@ -127,7 +127,7 @@ const ServiceGrid = () => {
 
               <motion.button
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-2 text-white font-bold uppercase text-[10px] tracking-[0.2em] pt-4 border-t border-white/5 w-fit"
+                className="cursor-target  flex items-center justify-center gap-2 text-white font-bold uppercase text-[10px] tracking-[0.2em] p-2 w-fit"
               >
                 {service.cta}{" "}
                 <ArrowUpRight size={14} className="text-indigo-500" />

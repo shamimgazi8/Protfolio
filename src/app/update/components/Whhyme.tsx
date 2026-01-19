@@ -61,7 +61,7 @@ const WhyMeAndFeedback = () => {
   ];
 
   return (
-    <section className="w-full bg-zinc-300 py-[100px] px-6 text-zinc-900 overflow-hidden">
+    <section className="w-full bg-zinc-200 py-[100px] px-6 text-zinc-900 overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -90,7 +90,7 @@ const WhyMeAndFeedback = () => {
                   }
                   className="w-full flex justify-between items-center py-4 text-left group"
                 >
-                  <span className="text-xl font-bold uppercase tracking-tighter group-hover:text-indigo-600 transition-colors">
+                  <span className="cursor-target text-xl font-bold uppercase tracking-tighter group-hover:text-indigo-600 transition-colors">
                     0{i + 1}. {item.title}
                   </span>
                   {activeAccordion === i ? (
@@ -175,7 +175,7 @@ const WhyMeAndFeedback = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="w-full mt-12 bg-zinc-900 text-white py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-indigo-600 transition-all duration-200"
+            className="cursor-target w-full mt-12 bg-zinc-900 text-white py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-indigo-600 transition-all duration-200"
           >
             View All Reviews
           </motion.button>

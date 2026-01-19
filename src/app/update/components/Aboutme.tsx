@@ -81,7 +81,7 @@ const AboutParallax = () => {
               <h3 className="text-indigo-500 font-mono text-sm tracking-[0.3em] mb-8 uppercase">
                 Expert In
               </h3>
-              <div className="space-y-6">
+              <div className="cursor-target space-y-6">
                 {[
                   { skill: "React / Next.js", level: "95%" },
                   { skill: "Node / NestJS", level: "90%" },
@@ -116,7 +116,7 @@ const AboutParallax = () => {
         </motion.div>
 
         {/* RIGHT COLUMN: Timeline & Terminal */}
-        <div className="lg:col-span-7 flex flex-col justify-between">
+        <div className=" lg:col-span-7 flex flex-col justify-between">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 relative">
             {/* Education */}
             <motion.div
@@ -128,7 +128,7 @@ const AboutParallax = () => {
               <h3 className="text-indigo-500 font-mono text-sm tracking-[0.3em] uppercase">
                 Education
               </h3>
-              <div className="space-y-10 border-l border-zinc-900 pl-6">
+              <div className=" space-y-10 border-l border-zinc-900 pl-6">
                 {[
                   {
                     year: "2018-2022",
@@ -227,7 +227,7 @@ const AboutParallax = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
-            className="hidden lg:block self-center mt-28 w-full max-w-lg origin-bottom "
+            className="cursor-target hidden lg:block self-center mt-28 w-full max-w-lg origin-bottom "
           >
             <div className="bg-[#050505] border border-white/10 rounded-lg overflow-hidden scale-75">
               {/* Header */}
