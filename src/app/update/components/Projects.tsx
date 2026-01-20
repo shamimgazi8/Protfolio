@@ -4,11 +4,12 @@ import Link from "next/link";
 import { motion, useSpring, useMotionValue } from "framer-motion";
 import {
   ArrowUpRight,
-  Cpu,
-  Globe,
+  Gamepad2,
+  Box,
   LucideIcon,
-  Zap,
-  Smartphone,
+  Sparkles,
+  GraduationCap,
+  ShieldCheck,
   Plus,
 } from "lucide-react";
 
@@ -99,52 +100,67 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "NeuroFlow AI",
-    category: "Machine Learning",
+    title: "Sportinerd",
+    category: "Sports Analytics & Fantasy Football",
     size: "large",
     description:
-      "A real-time neural interface for predictive workflow automation.",
-    icon: Cpu,
-    tech: ["Next.js", "Python"],
-    image:
-      "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1000",
-    href: "/projects/neuroflow",
+      "The definitive arena for tactical football minds. Sportinerd merges real-time performance analytics with high-stakes fantasy competition, allowing you to build, manage, and dominate your own football empire.",
+    icon: Gamepad2, // Assuming Lucide-react or similar icon library
+    tech: ["Next.js", "Tailwind CSS", "PostgreSQL"],
+    image: "/assets/sporti.png", // Representative image from site
+    href: "https://sportinerd.com",
   },
   {
     id: 2,
-    title: "EcoPulse",
-    category: "IoT",
+    title: "BRAXX USA",
+    category: "E-Mobility / IoT",
     size: "medium",
-    description: "Monitoring global carbon emissions.",
-    icon: Globe,
-    tech: ["D3.js", "AWS"],
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800",
-    href: "/projects/ecopulse",
+    description:
+      "High-performance electric motorcycles with integrated real-time field performance monitoring.",
+    icon: Box, // More specific than Globe
+    tech: ["Three.js", "WebGL", "React Three Fiber", "AWS"],
+    image: "/assets/braxx.png", // Representative e-moto image
+
+    href: "https://www.braxxusa.com/",
   },
   {
-    id: 3,
-    title: "Titan Wallet",
-    category: "Fintech",
+    id: 3, // Assuming this is your next project
+    title: "ThinkWave",
+    category: "AI / DevOps",
+    size: "large",
+    description:
+      "An agentic AI ecosystem that transforms natural language prompts into fully deployed, production-ready web applications.",
+    icon: Sparkles,
+    tech: ["Next.js", "Vercel SDK", "OpenAI / Claude API", "Tailwind CSS"],
+    image: "/assets/thinkwave.png", // Sleek, futuristic AI/Abstract image
+
+    href: "https://thinkwave.ai/", // Replace with your actual project link
+  },
+  {
+    id: 4, // Incremental ID
+    title: "WorldUniHub",
+    category: "EdTech / Consultancy",
+    size: "medium",
+    description:
+      "A comprehensive global education hub connecting students with international universities through AI-driven matching and expert consultancy.",
+    icon: GraduationCap,
+    tech: ["React", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    image: "/assets/wuh.png", // High-quality education/campus image
+
+    href: "https://worldunihub.com/",
+  },
+  {
+    id: 5,
+    title: "ImmiLink",
+    category: "LegalTech / Marketplace",
     size: "small",
-    description: "Next-gen encryption.",
-    icon: Zap,
-    tech: ["Solidity"],
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=600",
-    href: "/projects/titan",
-  },
-  {
-    id: 4,
-    title: "Orbit App",
-    category: "Mobile",
-    size: "medium",
-    description: "Social networking for space.",
-    icon: Smartphone,
-    tech: ["Firebase"],
-    image:
-      "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800",
-    href: "/projects/orbit",
+    description:
+      "A secure marketplace connecting global applicants with licensed Canadian immigration practitioners for verified legal advice and application management.",
+    icon: ShieldCheck,
+    tech: ["PHP", "Laravel", "MySQL", "Bootstrap"],
+    image: "/assets/immi.png", // Legal/Trust-oriented image
+
+    href: "https://immilink.ca/",
   },
   {
     id: "btn-more",
@@ -153,6 +169,7 @@ const projects: Project[] = [
     size: "small",
     description: "Explore the full archive of experimental works.",
     icon: Plus,
+    // image: "/assets/view.png",
     href: "/projects",
   },
 ];
@@ -228,7 +245,7 @@ export default function SmartProjectPage() {
                       `}
                     />
                     <div
-                      className={`absolute inset-0 bg-gradient-to-br from-white/90 via-white/20 to-transparent transition-opacity duration-500
+                      className={`absolute inset-0 bg-gradient-to-br from-black/90 via-black/20 to-transparent transition-opacity duration-500
                       ${hoveredId === project.id ? "opacity-30" : "opacity-100"}`}
                     />
                   </div>
@@ -265,10 +282,21 @@ export default function SmartProjectPage() {
                       {project.category}
                     </p>
                     <h3
-                      className={`font-bold tracking-tight leading-none 
-                      ${project.id === "btn-more" ? "text-white" : "text-[#1D1D1F]"}
-                     ${project.size === "large" ? "text-4xl" : "text-xl"}
-xl"}`}
+                      className={`
+    /* 1. High-End Typography */
+    font-extrabold tracking-tight leading-[0.9]
+    
+    /* 2. Sophisticated Color: Subtle vertical gradient for depth */
+    bg-gradient-to-b from-white via-white to-white/40
+    bg-clip-text text-transparent
+    
+    /* 3. Sizing (Responsive & Bold) */
+    ${project.size === "large" ? "text-4xl md:text-6xl" : "text-3xl"}
+
+    /* 4. Subtle Refinement */
+    drop-shadow-sm
+    transition-all duration-500 group-hover:tracking-tighter
+  `}
                     >
                       {project.title}
                     </h3>
@@ -282,7 +310,7 @@ xl"}`}
                       className="overflow-hidden"
                     >
                       <p
-                        className={`text-sm mt-2 max-w-sm ${project.id === "btn-more" ? "text-blue-50" : "text-gray-600"}`}
+                        className={`text-sm mt-2 max-w-sm ${project.id === "btn-more" ? "text-blue-50" : "text-white"}`}
                       >
                         {project.description}
                       </p>
@@ -291,7 +319,25 @@ xl"}`}
                           {project.tech.map((t) => (
                             <span
                               key={t}
-                              className="px-2 py-1 bg-black/5 text-[10px] font-bold rounded-md"
+                              className={`
+    /* 1. Shape & Layout */
+    px-2.5 py-0.5 rounded-full inline-flex items-center justify-center
+    
+    /* 2. Typography - Small, Bold, and Spaced out for a "Pro" look */
+    text-[9px] font-black uppercase tracking-widest
+    
+    /* 3. Modern Glassmorphism & Border */
+    backdrop-blur-sm border transition-all duration-300
+    
+    ${
+      project.id === "btn-more"
+        ? "bg-white/10 border-white/20 text-white hover:bg-white/20"
+        : "bg-blue-600/5 border-blue-600/10 text-blue-700 hover:bg-blue-600 hover:text-white hover:border-transparent"
+    }
+    
+    /* 4. Subtle Shadow for depth */
+    shadow-[0_2px_10px_rgba(0,0,0,0.02)]
+  `}
                             >
                               {t}
                             </span>

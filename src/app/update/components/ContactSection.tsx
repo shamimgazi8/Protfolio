@@ -35,17 +35,17 @@ const ContactSection = () => {
             <ContactInfo
               icon={<Mail size={20} />}
               label="Email"
-              value="hello@yourdomain.com"
+              value="shamim.g47@gmail.com"
             />
             <ContactInfo
               icon={<Phone size={20} />}
               label="Phone"
-              value="+1 (234) 567 890"
+              value="+880 196 0475783"
             />
             <ContactInfo
               icon={<MapPin size={20} />}
               label="Location"
-              value="New York, NY"
+              value="Dhaka, Bangladesh"
             />
             <ContactInfo
               icon={<Globe size={20} />}

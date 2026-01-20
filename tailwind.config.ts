@@ -19,9 +19,18 @@ const config: Config = {
       backdropBlur: {
         xs: "2px",
       },
+      // tailwind.config.ts
+      // tailwind.config.ts
+      keyframes: {
+        streak: {
+          "0%": { backgroundPosition: "0% center" },
+          "100%": { backgroundPosition: "200% center" },
+        },
+        // ... your other keyframes
+      },
       animation: {
-        "spin-slow": "spin 1s linear infinite",
-        "spin-slower": "spin 8s liner infinite",
+        streak: "streak 1s linear infinite", // Sped up to 1s for "Hyperspeed" feel
+        hyperspeed: "hyperspeed 0.2s ease-out forwards",
       },
       backgroundImage: {
         circulerLight:

@@ -1,47 +1,26 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, Quote, Star } from "lucide-react";
+import { Plus, Minus, Quote, Star, ArrowUpRight } from "lucide-react";
 
 const WhyMeAndFeedback = () => {
   const [activeAccordion, setActiveAccordion] = useState(0);
 
-  // FASTER Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1, // Reduced from 0.2
-        delayChildren: 0.1, // Reduced from 0.3
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4, // Reduced from 0.8
-        ease: [0.23, 1, 0.32, 1], // Snappier cubic-bezier
-      },
-    },
-  };
-
   const whyMeData = [
     {
       title: "Scalable Architecture First",
+      tag: "Backend",
       content:
         "I don't just build features; I build systems. Using NestJS and PostgreSQL, I ensure your application can handle growth from day one without technical debt.",
     },
     {
       title: "Performance-Driven Frontend",
+      tag: "Optimization",
       content:
         "Speed is a feature. By leveraging Next.js Server Components and advanced caching, I deliver sub-second load times that improve SEO and user retention.",
     },
     {
       title: "Seamless Communication",
+      tag: "Strategy",
       content:
         "I act as a bridge between design and engineering. You'll get clear updates, transparent documentation, and a partner who cares about your business goals.",
     },
@@ -51,29 +30,43 @@ const WhyMeAndFeedback = () => {
     {
       name: "James Sarah",
       role: "CTO, TechFlow",
-      text: "The transition from our legacy system to a modern Next.js stack was flawless. The attention to detail in the API architecture was impressive.",
+      initials: "JS",
+      text: "The transition from our legacy system to a modern Next.js stack was flawless. The attention to detail in the architecture was impressive.",
     },
     {
       name: "Elena Rodriguez",
       role: "Founder, GreenSpace",
+      initials: "ER",
       text: "Not only is the code clean, but the UI/UX logic actually makes sense for our users. A rare find in a full-stack developer.",
     },
   ];
 
   return (
-    <section className="w-full bg-zinc-200 py-[100px] px-6 text-zinc-900 overflow-hidden">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }} // Set to once: true for better performance
-        className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20"
-      >
-        {/* LEFT: WHY ME (Accordion) */}
-        <div>
-          <motion.div variants={itemVariants}>
-            <h2 className="text-5xl font-black uppercase italic mb-12">
-              Why Me?
+    <section className="w-full h-[90vh] bg-[#fafafa] py-24 px-6 text-zinc-900 overflow-hidden relative">
+      {/* Decorative Background Element */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-indigo-50/50 -skew-x-12 translate-x-1/2 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
+        {/* LEFT: THE CONTENT (Accordion) */}
+        <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="mb-12"
+          >
+            <span className="text-indigo-600 font-bold text-xs uppercase tracking-[0.3em] mb-4 block">
+              The Value Proposition
+            </span>
+            <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-none mb-4 uppercase italic">
+              Why{" "}
+              <span
+                className="text-transparent stroke-zinc-900 stroke-1"
+                style={{ WebkitTextStroke: "1px #18181b" }}
+              >
+                Work
+              </span>{" "}
+              With Me?
             </h2>
           </motion.div>
 
@@ -81,36 +74,56 @@ const WhyMeAndFeedback = () => {
             {whyMeData.map((item, i) => (
               <motion.div
                 key={i}
-                variants={itemVariants}
-                className="border-b border-zinc-300 pb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className={`group border rounded-3xl transition-all duration-500 ${
+                  activeAccordion === i
+                    ? "bg-white border-zinc-200 shadow-xl shadow-zinc-200/40"
+                    : "bg-transparent border-zinc-200/60"
+                }`}
               >
                 <button
                   onClick={() =>
                     setActiveAccordion(activeAccordion === i ? -1 : i)
                   }
-                  className="w-full flex justify-between items-center py-4 text-left group"
+                  className="w-full flex justify-between items-center p-6 md:p-8 text-left relative overflow-hidden"
                 >
-                  <span className="cursor-target text-xl font-bold uppercase tracking-tighter group-hover:text-indigo-600 transition-colors">
-                    0{i + 1}. {item.title}
-                  </span>
-                  {activeAccordion === i ? (
-                    <Minus size={20} />
-                  ) : (
+                  <div className="flex items-center gap-6 relative z-10">
+                    <span
+                      className={`text-4xl font-black transition-colors duration-500 ${activeAccordion === i ? "text-indigo-600/10" : "text-zinc-100"}`}
+                    >
+                      0{i + 1}
+                    </span>
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-500 mb-1 block">
+                        {item.tag}
+                      </span>
+                      <h3 className="text-xl font-bold uppercase tracking-tighter">
+                        {item.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <div
+                    className={`p-2 rounded-full transition-all duration-300 ${activeAccordion === i ? "bg-indigo-600 text-white rotate-180" : "bg-zinc-100 text-zinc-400"}`}
+                  >
                     <Plus size={20} />
-                  )}
+                  </div>
                 </button>
+
                 <AnimatePresence>
                   {activeAccordion === i && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "circOut" }} // Accelerated accordion open
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 text-zinc-600 leading-relaxed max-w-md">
-                        {item.content}
-                      </p>
+                      <div className="px-8 pb-8 md:pl-28">
+                        <p className="text-zinc-500 text-base leading-relaxed max-w-lg">
+                          {item.content}
+                        </p>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -119,68 +132,74 @@ const WhyMeAndFeedback = () => {
           </div>
         </div>
 
-        {/* RIGHT: FEEDBACK (Testimonials) */}
-        <motion.div
-          variants={{
-            hidden: { opacity: 0, x: 30 },
-            visible: {
-              opacity: 1,
-              x: 0,
-              transition: { duration: 0.5, ease: "easeOut" }, // Sped up from 1s
-            },
-          }}
-          className="bg-white p-8 md:p-12 rounded-[32px] shadow-xl shadow-zinc-200/50"
-        >
-          <div className="flex items-center gap-2 mb-8">
-            <Quote className="text-indigo-500" fill="currentColor" size={32} />
-            <h2 className="text-3xl font-bold tracking-tighter uppercase italic">
-              Feedback
-            </h2>
-          </div>
-
-          <div className="space-y-12">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i, duration: 0.4 }} // Faster staggered pop-in
-                viewport={{ once: true }}
-                className="relative pl-8 border-l-2 border-zinc-100"
-              >
-                <div className="flex gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={12}
-                      className="fill-indigo-500 text-indigo-500"
-                    />
-                  ))}
-                </div>
-                <p className="text-zinc-700 leading-relaxed mb-6 italic">
-                  &quot;{t.text}&quot;
-                </p>
-                <div>
-                  <h4 className="font-bold text-sm uppercase tracking-widest">
-                    {t.name}
-                  </h4>
-                  <span className="text-xs text-zinc-400 font-mono">
-                    {t.role}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="cursor-target w-full mt-12 bg-zinc-900 text-white py-4 rounded-xl font-bold text-xs uppercase tracking-[0.2em] hover:bg-indigo-600 transition-all duration-200"
+        {/* RIGHT: THE SOCIAL PROOF (Testimonials) */}
+        <div className="lg:col-span-5 flex flex-col justify-center h-[70vh]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="relative"
           >
-            View All Reviews
-          </motion.button>
-        </motion.div>
-      </motion.div>
+            {/* Background Shape */}
+            <div className="absolute -inset-4 bg-white/50 blur-3xl rounded-full -z-10" />
+
+            <div className="space-y-6">
+              {testimonials.map((t, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -5 }}
+                  className="bg-white p-8 rounded-[2rem] border border-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.04)] relative overflow-hidden"
+                >
+                  <Quote
+                    className="absolute top-6 right-8 text-zinc-50 opacity-20"
+                    size={80}
+                  />
+
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        size={12}
+                        className="fill-amber-400 text-amber-400"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-zinc-700 text-sm leading-relaxed mb-6 font-medium italic relative z-10">
+                    &quot;{t.text}&quot;
+                  </p>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
+                      {t.initials}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-xs uppercase tracking-widest text-zinc-900">
+                        {t.name}
+                      </h4>
+                      <p className="text-[10px] text-indigo-500 font-bold uppercase tracking-tighter">
+                        {t.role}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.button
+              whileHover={{ y: -2 }}
+              className=" cursor-target w-full mt-8 bg-zinc-900 text-white p-6 rounded-2xl flex items-center justify-center gap-3 group hover:bg-indigo-600 transition-all duration-300 shadow-2xl shadow-indigo-200"
+            >
+              <span className="font-bold text-xs uppercase tracking-[0.2em]">
+                Explore All Case Studies
+              </span>
+              <ArrowUpRight
+                size={18}
+                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+              />
+            </motion.button>
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 };
