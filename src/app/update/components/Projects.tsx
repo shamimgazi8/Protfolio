@@ -33,7 +33,7 @@ const CustomCursor = ({ hoveredId }: { hoveredId: number | string | null }) => {
 
   return (
     <motion.div
-      className="pointer-events-none cursor-none fixed top-0 left-0 z-50 flex items-center justify-center rounded-full"
+      className="pointer-events-none cursor-none fixed top-0 left-0 z-[99999] flex items-center justify-center rounded-full"
       style={{
         x: cursorX,
         y: cursorY,

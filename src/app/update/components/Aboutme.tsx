@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { link } from "fs";
 
 const AboutParallax = () => {
   const containerRef = useRef(null);
@@ -120,27 +121,31 @@ const AboutParallax = () => {
               <h3 className="text-indigo-500 font-mono text-xs tracking-[0.4em] uppercase">
                 / Education
               </h3>
-
               <div className="space-y-2 border-l border-zinc-800/50">
                 {[
                   {
                     year: "2020-2025",
                     school: "DIIT",
                     degree: "Computer Science",
-                    logo: "https://diit.edu.bd/media/family/DIIT2x_HE7gktk.png",
+                    logo: "/assets/diit.png",
+                    link: "https://www.diit.edu.bd",
                   },
                   {
                     year: "2018-2020",
                     school: "CODEWORKS",
+                    link: "https://codeworks.me/",
                     degree: "Engineering",
                     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlzktc7JCK6HfsLWPvRwlEQJUiPTXVDA89vg&s",
                   },
                 ].map((edu, i) => (
-                  <motion.div
+                  <motion.a
                     key={i}
+                    href={edu.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     variants={fadeInUp}
                     whileHover={{ x: 8 }}
-                    className="group relative pl-8 py-8 hover:bg-white/[0.02] rounded-r-2xl transition-all cursor-target"
+                    className=" cursor-target cursor-none group relative pl-8 py-8 hover:bg-white/[0.02] rounded-r-2xl transition-all block" // Added block
                   >
                     <div className="absolute left-[-5px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-zinc-800 border-2 border-[#030303] group-hover:bg-indigo-500 transition-colors" />
 
@@ -160,14 +165,15 @@ const AboutParallax = () => {
                       <div className="shrink-0 w-12 h-12 relative rounded-full border border-white/10 bg-zinc-900/50 overflow-hidden opacity-20 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all aspect-square">
                         <Image
                           src={edu.logo}
-                          alt="logo"
+                          alt={`${edu.school} logo`}
                           fill
                           sizes="48px"
                           className="object-cover"
+                          unoptimized // Keeps your resolution high as discussed before
                         />
                       </div>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
@@ -190,20 +196,25 @@ const AboutParallax = () => {
                     year: "2025-Present",
                     company: "EasySoft",
                     role: "Software Engineer",
-                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMzDj_uBFY22AHwseaQO9UNQgM9q_IEwAVdQ&s", // Add your logo path here
+                    link: "https://easyfashion.com.bd/",
+                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMzDj_uBFY22AHwseaQO9UNQgM9q_IEwAVdQ&s",
                   },
                   {
                     year: "2020-2022",
                     company: "M4yours IT",
                     role: "Frontend Developer",
-                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq1jXna7J6Wb-Vx7ylo66FJfUAAphW_vl3pg&s", // Add your logo path here
+                    link: "https://www.m4yours.com/",
+                    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSq1jXna7J6Wb-Vx7ylo66FJfUAAphW_vl3pg&s",
                   },
                 ].map((exp, i) => (
-                  <motion.div
+                  <motion.a // 1. Changed to motion.a
                     key={i}
+                    href={exp.link} // 2. Added the URL
+                    target="_blank" // 3. Open in new tab
+                    rel="noopener noreferrer"
                     variants={fadeInUp}
                     whileHover={{ x: 8 }}
-                    className="group relative pl-8 py-8 hover:bg-white/[0.02] rounded-r-2xl transition-all cursor-target"
+                    className=" cursor-target cursor-none group relative pl-8 py-8 hover:bg-white/[0.02] rounded-r-2xl transition-all  block" // 4. Added block and cursor-pointer
                   >
                     {/* Timeline Dot */}
                     <div className="absolute left-[-5px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] rounded-full bg-zinc-800 border-2 border-[#030303] group-hover:bg-emerald-500 transition-colors" />
@@ -230,10 +241,11 @@ const AboutParallax = () => {
                           fill
                           sizes="48px"
                           className="object-cover"
+                          unoptimized // 5. Skip optimization for higher resolution
                         />
                       </div>
                     </div>
-                  </motion.div>
+                  </motion.a>
                 ))}
               </div>
             </motion.div>
