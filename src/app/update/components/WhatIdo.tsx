@@ -8,6 +8,7 @@ import {
   Fingerprint,
   PenTool,
 } from "lucide-react";
+import { FaCloud } from "react-icons/fa";
 
 const WhatIDo = () => {
   // 1. Animation Variants
@@ -37,42 +38,41 @@ const WhatIDo = () => {
       transition: { duration: 0.8, ease: "circOut" },
     },
   };
-
   const services = [
     {
-      title: "WEB DESIGN & UI",
+      title: "FRONTEND ENGINEERING",
       icon: <Monitor size={24} />,
-      desc: "Creating high-fidelity interfaces with a focus on usability and modern aesthetics using Figma and Tailwind CSS.",
+      desc: "Architecting scalable SPAs with React/Next.js, focusing on performance optimization, state management (Redux/Zustand), and reusable component libraries.",
       color: "group-hover:text-blue-400",
     },
     {
-      title: "USER FLOW & WIREFRAMES",
-      icon: <GitBranch size={24} />,
-      desc: "Architecting logical user journeys and low-fidelity blueprints to ensure seamless navigation and conversion.",
+      title: "BACKEND & API DESIGN",
+      icon: <Layers size={24} />,
+      desc: "Building robust REST & GraphQL APIs using Node.js and Go. Implementing microservices architecture with a focus on security and rate limiting.",
       color: "group-hover:text-indigo-400",
     },
     {
-      title: "VISUAL DESIGN",
-      icon: <Layers size={24} />,
-      desc: "Developing consistent design systems, typography scales, and color palettes that reinforce brand identity.",
+      title: "DATABASE MANAGEMENT",
+      icon: <GitBranch size={24} />,
+      desc: "Designing relational (PostgreSQL) and NoSQL (MongoDB/Redis) schemas. Optimizing queries and ensuring data integrity through ACID compliance.",
       color: "group-hover:text-purple-400",
     },
     {
-      title: "MOBILE APP DESIGN",
-      icon: <Smartphone size={24} />,
-      desc: "Designing touch-first experiences for iOS and Android, ensuring platform-specific patterns are respected.",
+      title: "CLOUD & DEVOPS",
+      icon: <FaCloud size={24} />,
+      desc: "Deploying and managing containerized applications using Docker and Kubernetes. Setting up CI/CD pipelines via GitHub Actions or AWS.",
       color: "group-hover:text-emerald-400",
-    },
-    {
-      title: "BRANDING & LOGOS",
-      icon: <Fingerprint size={24} />,
-      desc: "Crafting unique visual identities and vector-based logos that stand out in a crowded digital marketplace.",
-      color: "group-hover:text-orange-400",
     },
     {
       title: "SYSTEM ARCHITECTURE",
       icon: <PenTool size={24} />,
-      desc: "Planning the bridge between design and code, ensuring assets are optimized for Next.js and high-speed delivery.",
+      desc: "Planning high-availability systems, implementing caching strategies, and managing message brokers like RabbitMQ or Kafka for async processing.",
+      color: "group-hover:text-orange-400",
+    },
+    {
+      title: "MOBILE DEVELOPMENT",
+      icon: <Smartphone size={24} />,
+      desc: "Bridging the gap between web and mobile using React Native to deliver cross-platform applications with native-level performance.",
       color: "group-hover:text-pink-400",
     },
   ];

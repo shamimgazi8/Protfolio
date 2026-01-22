@@ -44,7 +44,7 @@ const WhyMeAndFeedback = () => {
   return (
     <section className="w-full h-[90vh] bg-[#fafafa] py-24 px-6 text-zinc-900 overflow-hidden relative">
       {/* Decorative Background Element */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-indigo-50/50 -skew-x-12 translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-indigo-50 -skew-x-12 translate-x-1/2 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
         {/* LEFT: THE CONTENT (Accordion) */}

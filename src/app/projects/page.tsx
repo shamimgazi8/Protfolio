@@ -6,12 +6,17 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "Sportinerd",
-    type: "Full-Stack SaaS",
-    desc: "A high-performance athletic tracking platform. Architected with a NestJS microservices backend and a Next.js frontend for maximum scalability.",
-    tags: ["Next.js", "NestJS", "Prisma", "PostgreSQL"],
+    title: "Enterprise Ecosystem (ERP)",
+    type: "Proprietary Business Suite",
+    desc: "A private, integrated ERP solution featuring 4 core engines: HRM, Accounting, and a POS system with automated VAT/Tax logic. Engineered a specialized Factory Production module to track real-time manufacturing cycles and resource allocation.",
+    tags: [
+      "System Architecture",
+      "Node.js/Next.js",
+      "PostgreSQL",
+      "Inventory Logic",
+    ],
     image:
-      "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200",
+      "https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=1200", // A clean, professional abstract/office tech shot
   },
   {
     title: "MotoPulse",
@@ -22,9 +27,10 @@ const projects = [
       "https://images.unsplash.com/photo-1558981403-c5f91cbba527?q=80&w=1200",
   },
   {
-    title: "Nexus AI",
-    type: "AI Content Engine",
-    desc: "Advanced content generation engine utilizing OpenAI's GPT-4. Features streaming responses and dynamic vector-based prompt engineering.",
+    title: "devlop.me",
+    link: "https://develop-me-vgdn.vercel.app/",
+    type: "Wbsite builder",
+    desc: "Trusted Partner for Your Website Develop.",
     tags: ["OpenAI", "TypeScript", "Redis", "VectorDB"],
     image:
       "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200",
