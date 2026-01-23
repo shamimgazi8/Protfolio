@@ -316,7 +316,7 @@ const AboutParallax = () => {
                         </span>
                         :{" "}
                         <span className="text-zinc-300">
-                          &quot;New York, NY&quot;
+                          &quot;Dhaka, Bangladesh&quot;
                         </span>
                         ,
                       </span>
@@ -331,7 +331,7 @@ const AboutParallax = () => {
                         </span>
                         : [
                         <span className="text-indigo-400">
-                          &quot;Architecture&quot;
+                          &quot;Frontend/Full-Stack&quot;
                         </span>
                         ],
                       </span>
