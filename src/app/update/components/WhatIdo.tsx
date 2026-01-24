@@ -32,10 +32,11 @@ const WhatIDo = () => {
   };
 
   const titleVariants = {
-    hidden: { y: "100%" },
+    hidden: { y: 50, opacity: 0 }, // Start slightly lower and invisible
     visible: {
       y: 0,
-      transition: { duration: 0.8, ease: "circOut" },
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
   const services = [
@@ -92,12 +93,14 @@ const WhatIDo = () => {
           </motion.span>
 
           {/* Masking container for Title */}
-          <div className="overflow-hidden">
+          <div className="overflow-hidden py-2">
+            {" "}
+            {/* Added small padding so letters don't get clipped */}
             <motion.h2
               variants={titleVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.1 }} // Trigger earlier and only once for better UX
               className="text-5xl md:text-6xl font-black text-white uppercase italic"
             >
               What I Do
@@ -110,7 +113,7 @@ const WhatIDo = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3, margin: "-50px" }}
+          viewport={{ once: true, amount: 0.3 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-zinc-800/50 border border-zinc-800/50"
         >
           {services.map((service, index) => (
@@ -140,7 +143,7 @@ const WhatIDo = () => {
               </p>
 
               {/* Decorative Number */}
-              <span className="absolute bottom-4 right-6 text-4xl font-black text-white/[0.02] group-hover:text-white/[0.05] transition-colors">
+              <span className="absolute bottom-4 right-6 text-4xl font-black text-white/[0.02] group-hover:text-white/[0.5] transition-colors">
                 0{index + 1}
               </span>
             </motion.div>
