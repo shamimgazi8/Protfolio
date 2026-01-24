@@ -2,7 +2,7 @@
 
 import { Poppins } from "next/font/google";
 import Image from "next/image";
-import TypeWritting from "./TypeWritting";
+import TypeWritting from "../../@componants/TypeWritting";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Instagram, Download } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
@@ -184,7 +184,7 @@ const HomeContent = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
-          className="flex flex-col items-center justify-center mt-16 lg:mt-0 lg:ml-10"
+          className=" cursor-target md:flex flex-col items-center justify-center mt-16 lg:mt-0 lg:ml-10 hidden"
         >
           <motion.div
             animate={{ opacity: [0.4, 0.7, 0.4] }}

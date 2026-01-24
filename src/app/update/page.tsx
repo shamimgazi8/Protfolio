@@ -17,8 +17,9 @@ import StatsSection from "./components/StateSection";
 import ContactSection from "./components/ContactSection";
 import ServiceGrid from "./components/ServicesGrid";
 import InfinityBanner from "./components/InfinityBanner";
+import MobileSidebar from "@/components/ui/MobileSidebar";
 
-const HomeContent = dynamic(() => import("../@componants/HomeContent"));
+const HomeContent = dynamic(() => import("./components/HomeContent"));
 
 const PortfolioUpdate = () => {
   const [mounted, setMounted] = useState(false);
@@ -150,7 +151,7 @@ const PortfolioUpdate = () => {
       </motion.div>
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 w-full z-[100] flex justify-center pt-8 pointer-events-none">
+      <nav className="fixed top-0 left-0 w-full z-[100] md:flex justify-center pt-8 pointer-events-none hidden ">
         <div className="pointer-events-auto">
           <PillNav
             activeTab={activeTab}
@@ -159,7 +160,9 @@ const PortfolioUpdate = () => {
           />
         </div>
       </nav>
-
+      <div className="md:hidden   w-full pt-4 pl-4 z-999">
+        <MobileSidebar setActiveTab={setActiveTab} activeTab={activeTab} />
+      </div>
       {/* Content */}
       <main className="relative">
         <div id="home" className="scroll-mt-10">

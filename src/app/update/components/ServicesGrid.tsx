@@ -148,7 +148,7 @@ const ServiceGrid = () => {
                   {service.desc}
                 </p>
               </div>
-              <Link href={`articles/${service?.slug}`}>
+              <a target="blank" href={`articles/${service?.slug}`}>
                 <motion.button
                   whileHover={{ x: 5 }}
                   className="cursor-target flex items-center justify-center gap-2 text-white font-bold uppercase text-[9px] tracking-[0.2em] p-1 w-fit"
@@ -156,7 +156,7 @@ const ServiceGrid = () => {
                   {service.cta}{" "}
                   <ArrowUpRight size={12} className="text-indigo-500" />
                 </motion.button>
-              </Link>
+              </a>
             </motion.div>
           ))}
         </div>
