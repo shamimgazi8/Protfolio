@@ -1,6 +1,8 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { X, Copy, Check, Linkedin, Twitter, Facebook, Link as LinkIcon } from "lucide-react";
+import { useState } from "react";
 import { ArticleData } from "../../data/articleData";
 
 export default function FullArticle({ article }: { article: ArticleData }) {
@@ -10,6 +12,33 @@ export default function FullArticle({ article }: { article: ArticleData }) {
   // Parallax and zoom effect for the background image
   const imageScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.15]);
   const textY = useTransform(scrollYProgress, [0, 0.4], [0, 80]);
+
+  const [isShareOpen, setIsShareOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleShare = async () => {
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({
+          title: article.title,
+          text: `Check out this article: ${article.title}`,
+          url: window.location.href,
+        });
+      } catch (err) {
+        console.error("Error sharing:", err);
+      }
+    } else {
+      setIsShareOpen(true);
+    }
+  };
+
+  const copyLink = () => {
+    if (typeof window !== "undefined") {
+      navigator.clipboard.writeText(window.location.href);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    }
+  };
 
   return (
     <div className="relative bg-white min-h-screen font-sans selection:bg-indigo-600 selection:text-white">
@@ -136,7 +165,10 @@ export default function FullArticle({ article }: { article: ArticleData }) {
           animate={{ y: 0 }}
           className="bg-white backdrop-blur-xl border border-white/10 px-6 py-4 rounded-full shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex items-center justify-between text-black"
         >
-          <button className="text-[10px] font-black uppercase tracking-widest hover:text-indigo-400 transition-colors">
+          <button
+            onClick={handleShare}
+            className="text-[10px] font-black uppercase tracking-widest hover:text-indigo-400 transition-colors"
+          >
             Share
           </button>
           <div className="w-px h-4 bg-white/20" />
@@ -152,6 +184,114 @@ export default function FullArticle({ article }: { article: ArticleData }) {
           </button>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {isShareOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+            onClick={() => setIsShareOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setIsShareOpen(false)}
+                className="absolute top-4 right-4 p-2 hover:bg-slate-100 rounded-full transition-colors"
+              >
+                <X size={20} className="text-slate-500" />
+              </button>
+
+              <h3 className="text-xl font-bold text-slate-900 mb-6">
+                Share Article
+              </h3>
+
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                    article.title
+                  )}&url=${encodeURIComponent(
+                    typeof window !== "undefined" ? window.location.href : ""
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300">
+                    <Twitter
+                      size={20}
+                      className="text-slate-600 group-hover:text-white"
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    Twitter
+                  </span>
+                </a>
+
+                <a
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                    typeof window !== "undefined" ? window.location.href : ""
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                    <Facebook
+                      size={20}
+                      className="text-slate-600 group-hover:text-white"
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    Facebook
+                  </span>
+                </a>
+
+                <a
+                  href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+                    typeof window !== "undefined" ? window.location.href : ""
+                  )}&title=${encodeURIComponent(article.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300">
+                    <Linkedin
+                      size={20}
+                      className="text-slate-600 group-hover:text-white"
+                    />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                    LinkedIn
+                  </span>
+                </a>
+              </div>
+
+              <div className="flex items-center gap-2 p-2 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="flex-1 px-2 text-xs text-slate-500 truncate font-mono">
+                  {typeof window !== "undefined" ? window.location.href : ""}
+                </div>
+                <button
+                  onClick={copyLink}
+                  className={`p-2 rounded-lg transition-all ${
+                    isCopied
+                      ? "bg-green-500 text-white"
+                      : "bg-indigo-600 text-white hover:bg-indigo-700"
+                  }`}
+                >
+                  {isCopied ? <Check size={16} /> : <Copy size={16} />}
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
