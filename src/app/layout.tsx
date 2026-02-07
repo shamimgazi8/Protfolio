@@ -8,8 +8,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import "./globals.css";
-import StarsCanvas from "./@componants/StarBackGround";
-import NavBar from "./@componants/NavBar";
+
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 const caveat = Caveat({ subsets: ["latin"] });
@@ -39,6 +39,7 @@ export default function RootLayout({
       >
         {/* <StarsCanvas /> */}
         <div className={montserrat.className}>{children}</div>
+        <Footer />
       </body>
     </html>
   );

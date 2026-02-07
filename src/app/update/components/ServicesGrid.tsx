@@ -12,7 +12,7 @@ import Link from "next/link";
 const services = [
   {
     id: "01",
-    slug: "/nest-js-golden-stack",
+    slug: "nest-js-golden-stack",
     title: "Enterprise Backend Architecture",
     tags: ["NESTJS", "TYPESCRIPT", "MICROSERVICES"],
     desc: "Designing modular, testable, and maintainable server-side systems using NestJS. Built for high-stakes business logic.",
@@ -33,7 +33,7 @@ const services = [
   {
     id: "03",
     title: "Server-Side Rendering & SEO",
-    slug: "postgres-vs-mongodb-prisma-bridge",
+    slug: "nextjs-ssr-seo-optimization",
     tags: ["NEXT.JS", "SERVER COMPONENTS", "SEO"],
     desc: "Leveraging Next.js App Router to build lightning-fast, SEO-optimized frontends.",
     cta: "Analyze Speed",
@@ -43,7 +43,7 @@ const services = [
   {
     id: "04",
     title: "Real-Time Applications",
-    slug: "postgres-vs-mongodb-prisma-bridge",
+    slug: "real-time-websockets-redis",
     tags: ["SOCKET.IO", "REDIS", "NESTJS"],
     desc: "Building interactive experiences like live dashboards using WebSockets.",
     cta: "See Live Demo",
@@ -53,7 +53,7 @@ const services = [
   {
     id: "05",
     title: "Secure Authentication",
-    slug: "postgres-vs-mongodb-prisma-bridge",
+    slug: "secure-authentication-jwt-oauth",
     tags: ["PASSPORT.JS", "NEXTAUTH", "RBAC"],
     desc: "Implementing robust security layers with JWT, OAuth2, and RBAC.",
     cta: "Read Security Docs",
@@ -148,7 +148,7 @@ const ServiceGrid = () => {
                   {service.desc}
                 </p>
               </div>
-              <a target="blank" href={`articles/${service?.slug}`}>
+              <Link href={`articles/${service?.slug}`}>
                 <motion.button
                   whileHover={{ x: 5 }}
                   className="cursor-target flex items-center justify-center gap-2 text-white font-bold uppercase text-[9px] tracking-[0.2em] p-1 w-fit"
@@ -156,7 +156,7 @@ const ServiceGrid = () => {
                   {service.cta}{" "}
                   <ArrowUpRight size={12} className="text-indigo-500" />
                 </motion.button>
-              </a>
+              </Link>
             </motion.div>
           ))}
         </div>

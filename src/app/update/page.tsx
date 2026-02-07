@@ -122,7 +122,8 @@ const PortfolioUpdate = () => {
     });
   };
 
-  if (!mounted) return <div className="h-screen bg-black" />;
+  // Removed blocking mount check for scroll restoration
+  // if (!mounted) return <div className="h-screen bg-black" />;
 
   return (
     <div className="bg-black text-white overflow-x-hidden">

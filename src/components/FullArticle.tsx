@@ -27,7 +27,7 @@ export default function FullArticle({ article }: { article: ArticleData }) {
         >
           <img
             src={article.image}
-            alt=""
+            alt={article.title}
             className="w-full h-full object-cover opacity-70"
           />
           {/* Gradients for text protection */}

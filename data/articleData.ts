@@ -20,11 +20,11 @@ export const ARTICLES: ArticleData[] = [
     slug: "nest-js-golden-stack",
     category: "Architecture",
     title:
-      "The Golden Stack: Scaling Enterprise Backends with NestJS and Microservices",
+      "Enterprise Backend Architecture: Scaling with NestJS and Microservices",
     author: "Sarah Chen",
     date: "Jan 23, 2026",
     readTime: "10 min read",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2670&auto=format&fit=crop",
     content: [
       {
         type: "paragraph",
@@ -73,11 +73,11 @@ export const ARTICLES: ArticleData[] = [
     slug: "postgres-vs-mongodb-prisma-bridge",
     category: "Database Design & ORM",
     title:
-      "The Polyglot Pivot: Optimizing Data Flow with PostgreSQL, MongoDB, and Prisma",
+      "Database Design & ORM: Optimizing Data Flow with PostgreSQL, MongoDB, and Prisma",
     author: "Sarah Chen",
     date: "Feb 12, 2026",
     readTime: "15 min read",
-    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d",
+    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=2521&auto=format&fit=crop",
     content: [
       {
         type: "paragraph",
@@ -139,6 +139,135 @@ export const ARTICLES: ArticleData[] = [
           "Step 3: Flatten deeply nested hierarchies into Mongo Documents for faster reads.",
           "Step 4: Use Prisma Middleware to sync cross-database events.",
         ],
+      },
+    ],
+  },
+  {
+    slug: "nextjs-ssr-seo-optimization",
+    category: "Frontend Performance",
+    title: "Server-Side Rendering & SEO: The Next.js Edge",
+    author: "Sarah Chen",
+    date: "Mar 15, 2026",
+    readTime: "8 min read",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop",
+    content: [
+      {
+        type: "paragraph",
+        text: "In the modern web, speed isn't just a feature—it's the primary metric. Single Page Applications (SPAs) often struggle with initial load times and Search Engine Optimization (SEO). Next.js bridges this gap with Server-Side Rendering (SSR) and Server Components.",
+      },
+      {
+        type: "heading",
+        text: "Why SSR Matters for Enterprise",
+      },
+      {
+        type: "paragraph",
+        text: "traditional SPAs render content in the browser, leaving search engine crawlers with a blank page until JavaScript executes. SSR generates the HTML on the server, ensuring content is instantly available to both users and bots.",
+      },
+      {
+        type: "list",
+        items: [
+          "Zero Layout Shift: Pre-rendered HTML provides a stable visual structure immediately.",
+          "SEO Dominance: Perfect for marketing pages, e-commerce listings, and content-heavy platforms.",
+          "Edge Caching: Rendered pages can be cached at the edge, delivering static-like performance.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Server Components: The new paradigm",
+      },
+      {
+        type: "paragraph",
+        text: "With React Server Components, we can fetch data directly on the server without sending additional JavaScript to the client. This drastically reduces bundle sizes and improves Time to Interactive (TTI).",
+      },
+      {
+        type: "quote",
+        text: "Performance is user retention. Every millisecond of latency costs revenue.",
+      },
+    ],
+  },
+  {
+    slug: "real-time-websockets-redis",
+    category: "Real-Time Systems",
+    title: "Real-Time Applications: Scaling WebSockets with Redis",
+    author: "Sarah Chen",
+    date: "Apr 02, 2026",
+    readTime: "12 min read",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2340&auto=format&fit=crop",
+    content: [
+      {
+        type: "paragraph",
+        text: "Users expect interfaces to be alive. Whether it's a stock ticker, a chat application, or a collaborative document, real-time updates are standard. However, maintaining thousands of persistent connections is a significant architectural challenge.",
+      },
+      {
+        type: "heading",
+        text: "The Socket.io Advantage",
+      },
+      {
+        type: "paragraph",
+        text: "Socket.io allows for bi-directional, event-based communication. Unlike HTTP polling, which wastes resources checking for updates, WebSockets keep a channel open for instant data push.",
+      },
+      {
+        type: "heading",
+        text: "Scaling Horizontally with Redis",
+      },
+      {
+        type: "paragraph",
+        text: "A single server can only handle so many connections. When you scale to multiple implementation instances, a user connected to Server A cannot chat with a user on Server B. Creating a Redis Adapter solves this.",
+      },
+      {
+        type: "list",
+        items: [
+          "Pub/Sub Mechanism: Redis acts as a message broker, broadcasting events across all server instances.",
+          "Efficiency: Decouples the application state from the connection layer.",
+          "Resilience: If one node fails, users can reconnect to another without losing the message stream.",
+        ],
+      },
+      {
+        type: "quote",
+        text: "Real-time isn't just about speed; it's about synchronization at scale.",
+      },
+    ],
+  },
+  {
+    slug: "secure-authentication-jwt-oauth",
+    category: "Security",
+    title: "Secure Authentication: JWT, OAuth2, and RBAC Strategies",
+    author: "Sarah Chen",
+    date: "Apr 20, 2026",
+    readTime: "14 min read",
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2670&auto=format&fit=crop",
+    content: [
+      {
+        type: "paragraph",
+        text: "Security is the bedrock of trust. In a distributed architecture, managing user identity securely and efficiently is paramount. We move beyond simple session cookies to robust, stateless authentication mechanisms.",
+      },
+      {
+        type: "heading",
+        text: "Stateless Auth with JWT",
+      },
+      {
+        type: "paragraph",
+        text: "JSON Web Tokens (JWT) allow us to transmit information between parties securely. Because they are signed, the backend can verify the user's identity without querying the database for every request.",
+      },
+      {
+        type: "list",
+        items: [
+          "Scalability: No server-side session storage required.",
+          "Cross-Domain: Works seamlessly across different domains and microservices.",
+          "Mobile Ready: The standard for native mobile application authentication.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Role-Based Access Control (RBAC)",
+      },
+      {
+        type: "paragraph",
+        text: "Authentication is 'who you are'; Authorization is 'what you can do'. RBAC maps users to roles (e.g., Admin, Editor, Viewer), ensuring granular control over resource access.",
+      },
+      {
+        type: "quote",
+        text: "Security is not a feature to be added; it is an architectural constraint to be respected.",
       },
     ],
   },
